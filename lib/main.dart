@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/screens/Dashboard/dashboard.dart';
 import 'package:minecloud_tal/screens/login/login.dart';
-import 'package:minecloud_tal/screens/onBoarding_page.dart';
-import 'package:minecloud_tal/screens/login/mobile_login.dart';
-import 'package:minecloud_tal/screens/plans/plans.dart';
-import 'package:minecloud_tal/screens/reset/reset.dart';
-import 'package:minecloud_tal/screens/signup/signup.dart';
-import 'package:minecloud_tal/screens/syncProgress_page.dart';
 import 'package:provider/provider.dart';
 
 import 'common/models/universal_models.dart';
-import 'screens/Dashboard/mobile_dasboard.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,12 +39,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'MiniCLoud',
       theme: ThemeData(
 
         primarySwatch: Colors.blue,
       ),
-      home:  LoginScreen(),
+      home:  DashBoard(),
       // home:  DashBoard(),
       // home: const Dashboard(),
     );

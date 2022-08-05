@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/Responsive/responsive.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
-import 'package:minecloud_tal/screens/Dashboard/mobile_dasboard.dart';
-import 'package:minecloud_tal/screens/Dashboard/web_dashboard.dart';
 import 'package:minecloud_tal/screens/Pageviewer/web_main.dart';
-import 'package:minecloud_tal/screens/login/mobile_login.dart';
-import 'package:minecloud_tal/screens/login/web_login.dart';
 
 import '../../common/theme/colors.dart';
-import '../../widgets/simpleWs.dart';
 import 'mobile_mai.dart';
 
 class MainPage extends StatelessWidget {

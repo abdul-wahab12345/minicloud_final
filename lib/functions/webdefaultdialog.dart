@@ -9,7 +9,7 @@ import 'bottomSheetW.dart';
 
 Future<void> showWebDialog({
   required BuildContext context,
-  required bool isPack,
+   required bool isPack,
   required String title,
   String? image,
   required String OkayBtn,
@@ -44,7 +44,7 @@ Future<void> showWebDialog({
               mainAxisSize: MainAxisSize.min,
               children: [
                 buildTopTitle(context,
-                    isPack: isPack, title: title, image: image),
+                    title: title, image: image),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -59,11 +59,8 @@ Future<void> showWebDialog({
                     Expanded(
                         child:
                             DialogButton(text: cancelBtn,btncolor: kTapBorderAssets,onPressed: (){
-                              Navigator.of(context).pop();
-                              showWebDialog(context: context, isPack: isPack, title: title, OkayBtn: 'Delete', cancelBtn: 'Cancel',okayTap: (){
-                                Navigator.of(context).pop();
-                                 Navigator.of(context).pop();
-                              });
+                             
+                            
                             },),),
                     Expanded(
                       child: DialogButton(text:OkayBtn,btncolor: kLoadingGrey,onPressed: (){},),

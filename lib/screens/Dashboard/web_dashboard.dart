@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/functions/webdefaultdialog.dart';
 import 'package:minecloud_tal/screens/Dashboard/dashboard.dart';
 import 'package:minecloud_tal/widgets/dropdown.dart';
 import 'package:minecloud_tal/widgets/sidebar.dart';
@@ -162,10 +163,10 @@ class _WebDashBoardState extends State<WebDashBoard> {
                                       ]),
                                 ),
                                 SizedBox(
-                                  width: maxWidth(context)*0.01,
+                                  width: maxWidth(context) * 0.01,
                                 ),
                                 SizedBox(
-                                 width: 140,
+                                  width: 140,
                                   child: CustomDropDown(
                                       onChanged: (value) {},
                                       items: [
@@ -173,7 +174,6 @@ class _WebDashBoardState extends State<WebDashBoard> {
                                         'Beta',
                                       ]),
                                 ),
-                               
                               ],
                             ),
                           ),
@@ -222,23 +222,7 @@ class _WebDashBoardState extends State<WebDashBoard> {
   }
 }
 
-
-
-
-
-
-
-
 //web appbar down
-
-
-
-
-
-
-
-
-
 
 class WebAppbar extends StatefulWidget {
   WebAppbar({
@@ -257,6 +241,33 @@ class WebAppbar extends StatefulWidget {
 
 class _WebAppbarState extends State<WebAppbar> {
   bool showProfileOption = false;
+  bool isSync=false;
+
+  Widget buildListTile(
+      {required IconData leadingIcon,
+      required String title,
+      required String subTitle,
+      required Function()? onTap}) {
+    return InkWell(
+      onTap: onTap,
+      child: ListTile(
+        leading: Icon(
+          leadingIcon,
+          color: Colors.white,
+        ),
+        title: Text(
+          title,
+          style: poppinsMedium().copyWith(fontWeight: FontWeight.w300),
+        ),
+        subtitle: Text(
+          subTitle,
+          style:
+              poppinsRegular().copyWith(color: Colors.white.withOpacity(0.5)),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -297,48 +308,53 @@ class _WebAppbarState extends State<WebAppbar> {
                                           vertical: 20, horizontal: 15),
                                       // height: maxHeight(context) * 0.25,
                                       width: maxWidth(context) * 0.25,
-                                      child: Column(
+                                      child:isSync?Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
-                                            ListTile(
-                                              leading: const Icon(
-                                                Icons.sync_outlined,
-                                                color: Colors.white,
-                                              ),
-                                              title: Text(
-                                                'Sync',
-                                                style: poppinsMedium().copyWith(
-                                                    fontWeight:
-                                                        FontWeight.w300),
-                                              ),
-                                              subtitle: Text(
-                                                'Sync your assets without launching Minecraft',
-                                                style: poppinsRegular()
-                                                    .copyWith(
-                                                        color: Colors.white
-                                                            .withOpacity(0.5)),
-                                              ),
-                                            ),
+                                            buildListTile(
+                                                leadingIcon:
+                                                    Icons.stop,
+                                                title: 'Stop Sync',
+                                                subTitle:
+                                                    '',
+                                                onTap: () {
+                                                  setState(() {
+                                                    isSync=false;
+                                                  });
+                                                  Navigator.of(context).pop();
+                                                }),
                                             lightDivider(),
-                                            ListTile(
-                                              leading: Icon(
-                                                Icons.rocket_launch_outlined,
-                                                color: Colors.white,
-                                              ),
-                                              title: Text(
-                                                'Sync & Launch',
-                                                style: poppinsMedium().copyWith(
-                                                    fontWeight:
-                                                        FontWeight.w400),
-                                              ),
-                                              subtitle: Text(
-                                                'Launch Minecraft automatically after the sync',
-                                                style: poppinsRegular()
-                                                    .copyWith(
-                                                        color: Colors.white
-                                                            .withOpacity(0.5)),
-                                              ),
-                                            ),
+                                            buildListTile(
+                                                leadingIcon: Icons
+                                                    .playlist_add_check,
+                                                title: 'Show Progress',
+                                                subTitle:
+                                                    'Present all current cloud tasks',
+                                                onTap: () {}),
+                                          ])
+                                      : Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            buildListTile(
+                                                leadingIcon:
+                                                    Icons.sync_outlined,
+                                                title: 'Sync',
+                                                subTitle:
+                                                    'Sync your assets without launching Minecraft',
+                                                onTap: () {
+                                                  setState(() {
+                                                    isSync=true;
+                                                  });
+                                                  Navigator.of(context).pop();
+                                                }),
+                                            lightDivider(),
+                                            buildListTile(
+                                                leadingIcon: Icons
+                                                    .rocket_launch_outlined,
+                                                title: 'Sync & Launch',
+                                                subTitle:
+                                                    'Launch Minecraft automatically after the sync',
+                                                onTap: () {}),
                                           ]),
                                     ),
                                   ));
@@ -351,8 +367,8 @@ class _WebAppbarState extends State<WebAppbar> {
                           minimumSize: Size(50, 50),
                           maximumSize: Size(150, 50),
                         ),
-                        label: const Text(
-                          'Sync',
+                        label:  Text(
+                         isSync?'Syncing...': 'Sync',
                         ),
                       ),
                     ),
@@ -376,59 +392,35 @@ class _WebAppbarState extends State<WebAppbar> {
                                     child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
-                                          ListTile(
-                                            leading: Icon(
-                                              Icons.person_outline,
-                                              color: Colors.white,
-                                            ),
-                                            title: Text(
-                                              'Plan Details',
-                                              style: poppinsMedium().copyWith(
-                                                  fontWeight: FontWeight.w400),
-                                            ),
-                                            subtitle: Text(
-                                              'View Your Plan and Account Details',
-                                              style: poppinsRegular().copyWith(
-                                                  color: Colors.white
-                                                      .withOpacity(0.5)),
-                                            ),
-                                          ),
+                                          buildListTile(
+                                              leadingIcon: Icons.person_outline,
+                                              title: 'Plan Details',
+                                              subTitle:
+                                                  'View Your Plan and Account Details',
+                                              onTap: () {}),
                                           lightDivider(),
-                                          ListTile(
-                                            leading: Icon(
-                                              Icons.desktop_windows,
-                                              color: Colors.white,
-                                            ),
-                                            title: Text(
-                                              'Manage Devices',
-                                              style: poppinsMedium().copyWith(
-                                                  fontWeight: FontWeight.w400),
-                                            ),
-                                            subtitle: Text(
-                                              'Manage your connected devices',
-                                              style: poppinsRegular().copyWith(
-                                                  color: Colors.white
-                                                      .withOpacity(0.5)),
-                                            ),
-                                          ),
+                                          buildListTile(
+                                              leadingIcon:
+                                                  Icons.desktop_windows,
+                                              title: 'Manage Devices',
+                                              subTitle:
+                                                  'Manage your connected devices',
+                                              onTap: () {}),
                                           lightDivider(),
-                                          ListTile(
-                                            leading: Icon(
-                                              Icons.logout_outlined,
-                                              color: Colors.white,
-                                            ),
-                                            title: Text(
-                                              'Logout',
-                                              style: poppinsMedium().copyWith(
-                                                  fontWeight: FontWeight.w400),
-                                            ),
-                                            subtitle: Text(
-                                              'Logout from Minecloud',
-                                              style: poppinsRegular().copyWith(
-                                                  color: Colors.white
-                                                      .withOpacity(0.5)),
-                                            ),
-                                          ),
+                                          buildListTile(
+                                              leadingIcon:
+                                                  Icons.logout_outlined,
+                                              title: 'Logout',
+                                              subTitle: 'Logout from Minecloud',
+                                              onTap: () {
+                                                showWebDialog(
+                                                    context: context,
+                                                    title: 'Logout',
+                                                    
+                                                    isPack: false,
+                                                    OkayBtn: 'Logout',
+                                                    cancelBtn: "Cancel");
+                                              }),
                                           lightDivider(),
                                         ]),
                                   ),
@@ -462,7 +454,6 @@ class _WebAppbarState extends State<WebAppbar> {
                                   const Icon(Icons.expand_more)
                                 ],
                               ),
-                          
                             ],
                           )),
                     ),
@@ -477,11 +468,7 @@ class _WebAppbarState extends State<WebAppbar> {
         ),
         Text(
           widget.subTitle,
-          style: TextStyle(
-              fontFamily: 'poppinsRegular',
-              fontWeight: FontWeight.w500,
-              color: kPositiveWhite.withOpacity(0.6),
-              fontSize: 11),
+          style: poppinsRegular().copyWith(color: Colors.white.withOpacity(0.5)),
         ),
       ],
     );

@@ -1,16 +1,13 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:minecloud_tal/screens/login/login.dart';
-import 'package:minecloud_tal/screens/login/mobile_login.dart';
-import 'package:minecloud_tal/screens/reset/mobile_reset.dart';
 import 'package:minecloud_tal/widgets/textFieldW.dart';
 
 import '../../common/theme/colors.dart';
 import '../../common/theme/constants.dart';
 import '../Dashboard/dashboard.dart';
-import '../Dashboard/mobile_dasboard.dart';
 import '../../functions/cleanDialogW.dart';
 import '../../functions/loadingDialogW.dart';
 import '../../widgets/components/login_bottomSignUp.dart';

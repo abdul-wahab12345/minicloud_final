@@ -7,11 +7,9 @@ import 'package:minecloud_tal/widgets/components/mainBoardingSlider.dart';
 
 import '../../common/theme/colors.dart';
 import '../../common/theme/constants.dart';
-import '../../functions/bottomSheetW.dart';
 import '../../widgets/buttonsWs.dart';
 import '../../widgets/components/login_bottomSignUp.dart';
 import '../../widgets/worldPackTile/plansCleanTiles.dart';
-import '../../widgets/worldPackTile/worldPackTileW.dart';
 
 class WebPlans extends StatefulWidget {
   const WebPlans({Key? key}) : super(key: key);

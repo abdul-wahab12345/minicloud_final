@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:minecloud_tal/widgets/textFieldW.dart';
 
@@ -10,7 +9,6 @@ import '../../widgets/components/login_bottomSignUp.dart';
 import '../../widgets/buttonsWs.dart';
 import '../../widgets/simpleWs.dart';
 import '../login/login.dart';
-import '../login/mobile_login.dart';
 
 class MobileResetPass extends StatefulWidget {
   const MobileResetPass({Key? key}) : super(key: key);

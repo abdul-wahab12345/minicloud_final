@@ -12,7 +12,6 @@ import 'package:minecloud_tal/widgets/textFieldW.dart';
 import '../../common/theme/colors.dart';
 import '../../common/theme/constants.dart';
 import '../Dashboard/dashboard.dart';
-import '../Dashboard/mobile_dasboard.dart';
 import '../../functions/cleanDialogW.dart';
 import '../../functions/loadingDialogW.dart';
 import '../../widgets/components/login_bottomSignUp.dart';

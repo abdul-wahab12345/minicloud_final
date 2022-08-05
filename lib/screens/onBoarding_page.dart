@@ -1,11 +1,8 @@
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:introduction_screen/introduction_screen.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:minecloud_tal/screens/login/login.dart';
-import 'package:minecloud_tal/screens/login/mobile_login.dart';
 
 import '../common/theme/constants.dart';
 import '../widgets/buttonsWs.dart';

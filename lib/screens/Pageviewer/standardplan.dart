@@ -4,7 +4,6 @@ import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:minecloud_tal/functions/svgIconWidget.dart';
 
 import '../../common/theme/colors.dart';
-import '../../widgets/worldPackTile/worldPackTileW.dart';
 
 class MyPlanScreen extends StatelessWidget {
   const MyPlanScreen({Key? key}) : super(key: key);

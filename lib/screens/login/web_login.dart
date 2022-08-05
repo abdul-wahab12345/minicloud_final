@@ -54,6 +54,13 @@ class _WebLoginState extends State<WebLogin> {
     });
   }
 
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    timer!.cancel();
+    super.dispose();
+  }
+
  
 
   @override
@@ -78,9 +85,9 @@ class _WebLoginState extends State<WebLogin> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      buildSvgIconBox('assets/images/discord.svg',context),
-                      buildSvgIconBox('assets/images/globe-world-ear.svg',context),
-                      buildSvgIconBox('assets/images/Icon awesome-tw.svg',context),
+                      buildSvgIconBox('assets/svg/discord.svg',context),
+                      buildSvgIconBox('assets/svg/globe-913.svg',context),
+                      buildSvgIconBox('assets/svg/twitter.svg',context),
                     ],
                   ),
                 ],

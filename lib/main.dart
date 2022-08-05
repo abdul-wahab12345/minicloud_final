@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/screens/Dashboard/dashboard.dart';
 import 'package:minecloud_tal/screens/login/login.dart';
+import 'package:minecloud_tal/screens/onBoarding_page.dart';
 import 'package:provider/provider.dart';
 
 import 'common/models/universal_models.dart';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home:  DashBoard(),
+      home:  OnBoardingPage(),
       // home:  DashBoard(),
       // home: const Dashboard(),
     );

@@ -159,7 +159,7 @@ class _WebDashBoardState extends State<WebDashBoard> {
                           Expanded(
                             flex: 4,
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Container(
                                   padding: const EdgeInsets.symmetric(
@@ -508,19 +508,20 @@ class _WebAppbarState extends State<WebAppbar> {
                           showPopupMenu(context: context, popups: [
                             PopupMenuItem(
                               child: buildListTile(
-                                  leadingIcon: Icons.person_outline,
-                                  title: 'Plan Details',
-                                  subTitle:
-                                      'View Your Plan and Account Details',
-                                  onTap: () {}),
+                                leadingIcon: Icons.person_outline,
+                                title: 'Plan Details',
+                                subTitle: 'View Your Plan and Account Details',
+                                onTap: () {},
+                              ),
                             ),
                             PopupMenuItem(
                               child: buildListTile(
-                                  leadingIcon: Icons.desktop_windows,
-                                  title: 'Manage Devices',
-                                  subTitle: 'Manage your connected devices',
-                                  trailing: Icons.launch,
-                                  onTap: () {}),
+                                leadingIcon: Icons.desktop_windows,
+                                title: 'Manage Devices',
+                                subTitle: 'Manage your connected devices',
+                                trailing: Icons.launch,
+                                onTap: () {},
+                              ),
                             ),
                             PopupMenuItem(
                               child: buildListTile(
@@ -528,7 +529,8 @@ class _WebAppbarState extends State<WebAppbar> {
                                   title: 'Logout',
                                   subTitle: 'Logout from Minecloud',
                                   onTap: () {
-                                 showLogoutDialog(context: context, title: 'Logout');
+                                    showLogoutDialog(
+                                        context: context, title: 'Logout');
                                   }),
                             ),
                           ]);

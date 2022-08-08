@@ -23,89 +23,87 @@ class MyPlanScreen extends StatelessWidget {
                   Expanded(
                     flex: 3,
                     child: Container(
-                      // padding: const EdgeInsets.symmetric(horizontal: 15),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        gradient: darkPopupGradient,
-                      ),
-                      child: Row(
-                        children: [
-                          //Cloud Storage box start
-                          Expanded(
-                            flex: 4,
-                            child: Align(
-                              // alignment: Alignment.centerLeft,
-                              child: Stack(children: [
-                                Container(
-                                  height: maxHeight(context) * 0.1,
-                                  width: maxHeight(context) * 0.1,
-                                  decoration: BoxDecoration(
-                                      color:
-                                          Color.fromRGBO(102, 144, 184, 0.04),
-                                      borderRadius: BorderRadius.circular(50)),
-                                  child: Center(
-                                    child: Text(
-                                      '75%',
-                                      style: poppinsRegular(),
-                                    ),
-                                  ),
-                                ),
-                                Container(
+                        // padding: const EdgeInsets.symmetric(horizontal: 15),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          gradient: darkPopupGradient,
+                        ),
+                        child: Row(
+                          children: [
+                            //Cloud Storage box start
+                            Expanded(
+                              flex: 4,
+                              child: Align(
+                                // alignment: Alignment.centerLeft,
+                                child: Stack(children: [
+                                  Container(
                                     height: maxHeight(context) * 0.1,
                                     width: maxHeight(context) * 0.1,
-                                    child: const Directionality(
-                                      textDirection: TextDirection.rtl,
-                                      child: CircularProgressIndicator(
-                                        color: kPositiveBlueGui,
-                                        value: (75 / 100),
+                                    decoration: BoxDecoration(
+                                        color:
+                                            Color.fromRGBO(102, 144, 184, 0.04),
+                                        borderRadius:
+                                            BorderRadius.circular(50)),
+                                    child: Center(
+                                      child: Text(
+                                        '75%',
+                                        style: poppinsRegular(),
                                       ),
-                                    )),
-                              ]),
-                            ),
-                          ),
-                          // Expanded(flex: 1, child: Container()),
-                         
-                        
-                          Expanded(
-                            flex: 8,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                FittedBox(
-                                  child: Text(
-                                    'Cloud Storage',
-                                    style: poppinsMedium(),
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: maxHeight(context) * 0.02,
-                                ),
-                                FittedBox(
-                                  child: Text(
-                                    '52.3 MB used of 500 MB',
-                                    style: poppinsRegular(),
-                                  ),
-                                )
-                              ],
+                                  Container(
+                                      height: maxHeight(context) * 0.1,
+                                      width: maxHeight(context) * 0.1,
+                                      child: const Directionality(
+                                        textDirection: TextDirection.rtl,
+                                        child: CircularProgressIndicator(
+                                          color: kPositiveBlueGui,
+                                          value: (75 / 100),
+                                        ),
+                                      )),
+                                ]),
+                              ),
                             ),
-                          ),
-                       
-                        //Cloud Storage box end
+                            // Expanded(flex: 1, child: Container()),
 
-                        ],
-                      ),
-                      height: maxHeight(context)*0.15
-                    ),
+                            Expanded(
+                              flex: 8,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  FittedBox(
+                                    child: Text(
+                                      'Cloud Storage',
+                                      style: poppinsMedium(),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: maxHeight(context) * 0.02,
+                                  ),
+                                  FittedBox(
+                                    child: Text(
+                                      '52.3 MB used of 500 MB',
+                                      style: poppinsRegular(),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+
+                            //Cloud Storage box end
+                          ],
+                        ),
+                        height: maxHeight(context) * 0.15),
                   ),
                   SizedBox(
                     width: maxWidth(context) * 0.02,
                   ),
-                   // Webiste Box Start
+                  // Webiste Box Start
                   Expanded(
                     flex: 6,
                     child: Container(
-                      height: maxHeight(context)*0.16,
+                      height: maxHeight(context) * 0.16,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         gradient: positiveBlueButtonGradient,
@@ -116,7 +114,9 @@ class MyPlanScreen extends StatelessWidget {
                           Expanded(
                             flex: 5,
                             child: Container(
-                              padding:EdgeInsets.symmetric(vertical: maxHeight(context)*0.02,horizontal: 20),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: maxHeight(context) * 0.02,
+                                  horizontal: 20),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -136,7 +136,8 @@ class MyPlanScreen extends StatelessWidget {
                           Expanded(
                             flex: 6,
                             child: Container(
-                              padding: EdgeInsets.symmetric(vertical: maxHeight(context)*0.02),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: maxHeight(context) * 0.02),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.end,
@@ -147,16 +148,15 @@ class MyPlanScreen extends StatelessWidget {
                                     width: 10,
                                   ),
                                   buildSvgIconBox(
-                                      'assets/svg/globe-913.svg',
-                                      context),
+                                      'assets/svg/globe-913.svg', context),
                                   const SizedBox(
                                     width: 10,
                                   ),
                                   Container(
-                                    height: 40,
-                                    width: 120,
-                                    // padding: const EdgeInsets.symmetric(
-                                    //     vertical: 10, horizontal: 10),
+                                    height: 35,
+                                    // width: 120,
+                                    padding: const EdgeInsets.symmetric(
+                                    horizontal: 5),
                                     // height: maxHeight(context) * 0.04,
                                     // width: maxWidth(context) * 0.002,
                                     decoration: BoxDecoration(
@@ -165,21 +165,21 @@ class MyPlanScreen extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(20)),
                                     child: Center(
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            'Webiste',
-                                            style: poppinsStandard(),
-                                          ),
-                                          const SizedBox(
-                                            width:5,
-                                          ),
-                                          const Icon(Icons.launch)
-                                        ],
-                                      ),
-                                    ),
+                                        child: Directionality(
+                                          textDirection: TextDirection.rtl,
+                                          child: TextButton.icon(
+                                              onPressed: () {},
+                                              icon: const Icon(
+                                                Icons.launch_outlined,
+                                                size: 20,
+                                                color: Colors.white,
+                                              ),
+                                              label: Text(
+                                                'Webiste',
+                                                style: poppinsStandard()
+                                                    .copyWith(fontSize: 12),
+                                              )),
+                                        )),
                                   ),
                                   const SizedBox(
                                     width: 10,
@@ -192,19 +192,19 @@ class MyPlanScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-             // Webiste Box End
-               ],
+                  // Webiste Box End
+                ],
               ),
               SizedBox(
                 height: maxHeight(context) * 0.03,
               ),
               Row(
                 children: [
-                     // Devices Box Start
+                  // Devices Box Start
                   Expanded(
                     flex: 6,
                     child: Container(
-                     height: maxHeight(context)*0.16,
+                      height: maxHeight(context) * 0.16,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           gradient: darkPopupGradient),
@@ -213,12 +213,11 @@ class MyPlanScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            width: maxWidth(context)*0.3,
+                            width: maxWidth(context) * 0.3,
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 10),
                             child: Column(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
@@ -259,20 +258,17 @@ class MyPlanScreen extends StatelessWidget {
                             ),
                           ),
                           Container(
-                              margin:
-                                  const EdgeInsets.only(top: 15, right: 10),
+                              margin: const EdgeInsets.only(top: 15, right: 10),
                               height: 35,
-                              
-                              decoration: BoxDecoration(  
-                                  color: const Color.fromRGBO(
-                                      102, 144, 184, 0.2),
+                              decoration: BoxDecoration(
+                                  color:
+                                      const Color.fromRGBO(102, 144, 184, 0.2),
                                   borderRadius: BorderRadius.circular(15)),
                               child: Directionality(
                                   textDirection: TextDirection.rtl,
                                   child: TextButton.icon(
-                                  
                                       onPressed: () {},
-                                      icon:const Icon(
+                                      icon: const Icon(
                                         Icons.launch,
                                         size: 18,
                                       ),
@@ -285,11 +281,11 @@ class MyPlanScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                     // Devices Box End
+                  // Devices Box End
                   SizedBox(
                     width: maxWidth(context) * 0.02,
                   ),
-               // Standard Plan Box Start
+                  // Standard Plan Box Start
                   Expanded(
                     flex: 3,
                     child: Container(
@@ -359,10 +355,10 @@ class MyPlanScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      height: maxHeight(context)*0.15,
+                      height: maxHeight(context) * 0.15,
                     ),
                   ),
-               // Standard Plan Box End
+                  // Standard Plan Box End
                 ],
               ),
             ],

@@ -6,8 +6,8 @@ import '../common/theme/constants.dart';
 Widget buildSvgIconBox(String svg,BuildContext context) {
      var height =  maxHeight(context) / 100;
     return Container(
-        height: height * 5,
-        width: height * 5,
+        height: 40,
+        width: 40,
         decoration: BoxDecoration(
             color: Colors.black.withOpacity(0.3), shape: BoxShape.circle),
         padding: EdgeInsets.all(10),

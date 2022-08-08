@@ -23,17 +23,18 @@ class MyPlanScreen extends StatelessWidget {
                   Expanded(
                     flex: 3,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      // padding: const EdgeInsets.symmetric(horizontal: 15),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         gradient: darkPopupGradient,
                       ),
                       child: Row(
                         children: [
+                          //Cloud Storage box start
                           Expanded(
-                            flex: 5,
+                            flex: 4,
                             child: Align(
-                              alignment: Alignment.centerLeft,
+                              // alignment: Alignment.centerLeft,
                               child: Stack(children: [
                                 Container(
                                   height: maxHeight(context) * 0.1,
@@ -62,7 +63,9 @@ class MyPlanScreen extends StatelessWidget {
                               ]),
                             ),
                           ),
-                          Expanded(flex: 1, child: Container()),
+                          // Expanded(flex: 1, child: Container()),
+                         
+                        
                           Expanded(
                             flex: 8,
                             child: Column(
@@ -87,6 +90,9 @@ class MyPlanScreen extends StatelessWidget {
                               ],
                             ),
                           ),
+                       
+                        //Cloud Storage box end
+
                         ],
                       ),
                       height: maxHeight(context)*0.15
@@ -95,6 +101,7 @@ class MyPlanScreen extends StatelessWidget {
                   SizedBox(
                     width: maxWidth(context) * 0.02,
                   ),
+                   // Webiste Box Start
                   Expanded(
                     flex: 6,
                     child: Container(
@@ -109,8 +116,7 @@ class MyPlanScreen extends StatelessWidget {
                           Expanded(
                             flex: 5,
                             child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 20, horizontal: 20),
+                              padding:EdgeInsets.symmetric(vertical: maxHeight(context)*0.02,horizontal: 20),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -130,25 +136,27 @@ class MyPlanScreen extends StatelessWidget {
                           Expanded(
                             flex: 6,
                             child: Container(
-                              padding: EdgeInsets.symmetric(vertical: 20),
+                              padding: EdgeInsets.symmetric(vertical: maxHeight(context)*0.02),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   buildSvgIconBox(
                                       'assets/svg/discordfilled.svg', context),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   buildSvgIconBox(
-                                      'assets/images/Icon awesome-tw.svg',
+                                      'assets/svg/globe-913.svg',
                                       context),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 10, horizontal: 10),
+                                    height: 40,
+                                    width: 120,
+                                    // padding: const EdgeInsets.symmetric(
+                                    //     vertical: 10, horizontal: 10),
                                     // height: maxHeight(context) * 0.04,
                                     // width: maxWidth(context) * 0.002,
                                     decoration: BoxDecoration(
@@ -156,22 +164,24 @@ class MyPlanScreen extends StatelessWidget {
                                             255, 255, 255, 0.2),
                                         borderRadius:
                                             BorderRadius.circular(20)),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Webiste',
-                                          style: poppinsStandard(),
-                                        ),
-                                        SizedBox(
-                                          width: maxWidth(context) * 0.01,
-                                        ),
-                                        const Icon(Icons.launch)
-                                      ],
+                                    child: Center(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Webiste',
+                                            style: poppinsStandard(),
+                                          ),
+                                          const SizedBox(
+                                            width:5,
+                                          ),
+                                          const Icon(Icons.launch)
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                 ],
@@ -182,13 +192,15 @@ class MyPlanScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                ],
+             // Webiste Box End
+               ],
               ),
               SizedBox(
                 height: maxHeight(context) * 0.03,
               ),
               Row(
                 children: [
+                     // Devices Box Start
                   Expanded(
                     flex: 6,
                     child: Container(
@@ -258,8 +270,9 @@ class MyPlanScreen extends StatelessWidget {
                               child: Directionality(
                                   textDirection: TextDirection.rtl,
                                   child: TextButton.icon(
+                                  
                                       onPressed: () {},
-                                      icon: Icon(
+                                      icon:const Icon(
                                         Icons.launch,
                                         size: 18,
                                       ),
@@ -272,22 +285,24 @@ class MyPlanScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                     // Devices Box End
                   SizedBox(
                     width: maxWidth(context) * 0.02,
                   ),
+               // Standard Plan Box Start
                   Expanded(
                     flex: 3,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      // padding: const EdgeInsets.symmetric(horizontal: 15),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           gradient: darkPopupGradient),
                       child: Row(
                         children: [
                           Expanded(
-                            flex: 5,
+                            flex: 4,
                             child: Align(
-                              alignment: Alignment.centerLeft,
+                              // alignment: Alignment.centerLeft,
                               child: Stack(children: [
                                 Container(
                                   height: maxHeight(context) * 0.1,
@@ -316,7 +331,7 @@ class MyPlanScreen extends StatelessWidget {
                               ]),
                             ),
                           ),
-                          Expanded(flex: 1, child: Container()),
+                          // Expanded(flex: 1, child: Container()),
                           Expanded(
                             flex: 8,
                             child: Column(
@@ -347,6 +362,7 @@ class MyPlanScreen extends StatelessWidget {
                       height: maxHeight(context)*0.15,
                     ),
                   ),
+               // Standard Plan Box End
                 ],
               ),
             ],

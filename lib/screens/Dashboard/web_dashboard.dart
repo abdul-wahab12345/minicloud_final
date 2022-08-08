@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/functions/webpopups/logoutdailog.dart';
 import 'package:minecloud_tal/functions/webpopups/webdefaultdialog.dart';
 import 'package:minecloud_tal/screens/Dashboard/dashboard.dart';
 import 'package:minecloud_tal/widgets/dropdown.dart';
@@ -527,12 +528,7 @@ class _WebAppbarState extends State<WebAppbar> {
                                   title: 'Logout',
                                   subTitle: 'Logout from Minecloud',
                                   onTap: () {
-                                    showWebDialog(
-                                        context: context,
-                                        title: 'Logout',
-                                        isPack: false,
-                                        OkayBtn: 'Logout',
-                                        cancelBtn: "Cancel");
+                                 showLogoutDialog(context: context, title: 'Logout');
                                   }),
                             ),
                           ]);

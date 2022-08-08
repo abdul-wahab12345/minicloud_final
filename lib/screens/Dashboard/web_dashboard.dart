@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:minecloud_tal/functions/webdefaultdialog.dart';
+import 'package:minecloud_tal/functions/webpopups/webdefaultdialog.dart';
 import 'package:minecloud_tal/screens/Dashboard/dashboard.dart';
 import 'package:minecloud_tal/widgets/dropdown.dart';
+import 'package:minecloud_tal/widgets/popup_menu.dart';
 import 'package:minecloud_tal/widgets/sidebar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -9,6 +10,7 @@ import '../../common/theme/colors.dart';
 import '../../common/theme/constants.dart';
 import '../../common/theme/text.dart';
 import '../../functions/loadingDialogW.dart';
+import '../../functions/popup.dart';
 import '../../widgets/actionTileWs.dart';
 import '../../widgets/buttonsWs.dart';
 import '../../widgets/simpleWs.dart';
@@ -34,6 +36,7 @@ class _WebDashBoardState extends State<WebDashBoard> {
   int _chipIndex = 0;
   int _selectedIndex = 0;
   final PageController _pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -65,41 +68,47 @@ class _WebDashBoardState extends State<WebDashBoard> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    if (_selectedIndex == 0)
-                      WebAppbar(
-                        title: 'Local Data',
-                        subTitle:
-                            'Your playable Minecraft assets, stored on this device.',
-                        onChanged: (value) {
-                          setState(() {});
-                        },
+                    Container(
+                      child: Column(
+                        children: [
+                          if (_selectedIndex == 0)
+                            WebAppbar(
+                              title: 'Local Data',
+                              subTitle:
+                                  'Your playable Minecraft assets, stored on this device.',
+                              onChanged: (value) {
+                                setState(() {});
+                              },
+                            ),
+                          if (_selectedIndex == 1)
+                            WebAppbar(
+                              title: 'Cloud Data',
+                              subTitle:
+                                  'Your playable Minecraft assets, stored on this device.',
+                              onChanged: (value) {
+                                setState(() {});
+                              },
+                            ),
+                          if (_selectedIndex == 2)
+                            WebAppbar(
+                              title: 'Sync Process',
+                              subTitle:
+                                  'Progress of cloud tasks, such as upload & download.',
+                              onChanged: (value) {
+                                setState(() {});
+                              },
+                            ),
+                          if (_selectedIndex == 3)
+                            WebAppbar(
+                              title: 'Standard Plan',
+                              subTitle: 'Your Plan and account details',
+                              onChanged: (value) {
+                                setState(() {});
+                              },
+                            ),
+                        ],
                       ),
-                    if (_selectedIndex == 1)
-                      WebAppbar(
-                        title: 'Cloud Data',
-                        subTitle:
-                            'Your playable Minecraft assets, stored on this device.',
-                        onChanged: (value) {
-                          setState(() {});
-                        },
-                      ),
-                    if (_selectedIndex == 2)
-                      WebAppbar(
-                        title: 'Sync Process',
-                        subTitle:
-                            'Progress of cloud tasks, such as upload & download.',
-                        onChanged: (value) {
-                          setState(() {});
-                        },
-                      ),
-                    if (_selectedIndex == 3)
-                      WebAppbar(
-                        title: 'Standard Plan',
-                        subTitle: 'Your Plan and account details',
-                        onChanged: (value) {
-                          setState(() {});
-                        },
-                      ),
+                    ),
                     SizedBox(
                       height: maxHeight(context) * 0.03,
                     ),
@@ -119,8 +128,7 @@ class _WebDashBoardState extends State<WebDashBoard> {
                                 // shrinkWrap: true,
                                 itemBuilder: (context, index) {
                                   return Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 5),
+                                    padding: EdgeInsets.only(left: 10),
                                     child: ChoiceChip(
                                       label: Text(_chips[index]),
                                       selected: _chipIndex == index,
@@ -133,56 +141,173 @@ class _WebDashBoardState extends State<WebDashBoard> {
                                       backgroundColor: kTapBorderAssetsFull,
                                       shape: StadiumBorder(
                                           side: BorderSide(
-                                        width: 1.5,
+                                        width: 0,
                                         color: index == _chipIndex
                                             ? Color(0xff1E76DE)
                                             : kTapBorderAssets,
                                       )),
                                       labelStyle: poppinsRegular()
-                                          .copyWith(fontSize: 13),
+                                          .copyWith(fontSize: 11),
                                     ),
                                   );
                                 },
                               ),
                             ),
                           ),
-                          //sorting
+                          //Pop ups for sorting and release
                           Expanded(
                             flex: 4,
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                SizedBox(
-                                  width: 140,
-                                  child: CustomDropDown(
-                                      onChanged: (value) {},
-                                      items: [
-                                        'Last Modified',
-                                        'Name',
-                                        'Size',
-                                      ]),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 5, vertical: 4),
+                                  decoration: BoxDecoration(
+                                      // color: kDialogBg,
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Sort By:',
+                                        style: poppinsRegular()
+                                            .copyWith(fontSize: 13),
+                                      ),
+                                      Container(
+                                        width: 80,
+                                        child: CustomPopUpMenu(
+                                          parent: Row(
+                                            children: [
+                                              Text(
+                                                ' Name',
+                                                style: poppinsRegular()
+                                                    .copyWith(
+                                                        color: Colors.blue,
+                                                        fontSize: 12),
+                                              ),
+                                              const Icon(
+                                                Icons.arrow_drop_down,
+                                                color: Colors.white,
+                                              )
+                                            ],
+                                          ),
+                                          menuList: [
+                                            PopupMenuItem(
+                                              padding: EdgeInsets.zero,
+                                              child: Center(
+                                                child: Text(
+                                                  'Last Modified',
+                                                  style: poppinsStandard()
+                                                      .copyWith(
+                                                          color: Colors.white,
+                                                          fontSize: 12),
+                                                ),
+                                              ),
+                                            ),
+                                            PopupMenuItem(
+                                              padding: EdgeInsets.zero,
+                                              child: Center(
+                                                child: Text(
+                                                  'Name',
+                                                  style: poppinsStandard()
+                                                      .copyWith(
+                                                          color: Colors.white,
+                                                          fontSize: 12),
+                                                ),
+                                              ),
+                                            ),
+                                            PopupMenuItem(
+                                              child: Center(
+                                                child: Text(
+                                                  'Size',
+                                                  style: poppinsStandard()
+                                                      .copyWith(
+                                                          color: Colors.white,
+                                                          fontSize: 12),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                SizedBox(
-                                  width: maxWidth(context) * 0.01,
-                                ),
-                                SizedBox(
-                                  width: 140,
-                                  child: CustomDropDown(
-                                      onChanged: (value) {},
-                                      items: [
-                                        'Release',
-                                        'Beta',
-                                      ]),
+
+                                //second drop down
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 5, vertical: 4),
+                                  decoration: BoxDecoration(
+                                      // color: kDialogBg,
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Sort By:',
+                                        style: poppinsRegular()
+                                            .copyWith(fontSize: 13),
+                                      ),
+                                      Container(
+                                        width: 80,
+                                        child: CustomPopUpMenu(
+                                          parent: Row(
+                                            children: [
+                                              Text(
+                                                ' Release',
+                                                style: poppinsRegular()
+                                                    .copyWith(
+                                                        color: Colors.blue,
+                                                        fontSize: 12),
+                                              ),
+                                              Icon(
+                                                Icons.arrow_drop_down,
+                                                color: Colors.white,
+                                              )
+                                            ],
+                                          ),
+                                          menuList: [
+                                            PopupMenuItem(
+                                              padding: EdgeInsets.zero,
+                                              child: Center(
+                                                child: Text(
+                                                  'Release',
+                                                  style: poppinsStandard()
+                                                      .copyWith(
+                                                          color: Colors.white,
+                                                          fontSize: 12),
+                                                ),
+                                              ),
+                                            ),
+                                            PopupMenuItem(
+                                              padding: EdgeInsets.zero,
+                                              child: Center(
+                                                child: Text(
+                                                  'Beta',
+                                                  style: poppinsStandard()
+                                                      .copyWith(
+                                                          color: Colors.white,
+                                                          fontSize: 12),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
                           ),
-                          //sorting end
+                          //    //Pop ups for sorting and release ended
                         ],
                       ),
                     SizedBox(
                       height: maxHeight(context) * 0.02,
                     ),
+
+                    //Main area
                     Expanded(
                       child: PageView(
                         controller: _pageController,
@@ -211,6 +336,8 @@ class _WebDashBoardState extends State<WebDashBoard> {
                         },
                       ),
                     ),
+
+                    //Main Area End
                   ],
                 ),
               ),
@@ -241,28 +368,43 @@ class WebAppbar extends StatefulWidget {
 
 class _WebAppbarState extends State<WebAppbar> {
   bool showProfileOption = false;
-  bool isSync=false;
+  bool isSync = false;
+  bool isExpanded = false;
 
   Widget buildListTile(
       {required IconData leadingIcon,
+      IconData? trailing,
       required String title,
       required String subTitle,
       required Function()? onTap}) {
     return InkWell(
       onTap: onTap,
-      child: ListTile(
-        leading: Icon(
-          leadingIcon,
-          color: Colors.white,
-        ),
-        title: Text(
-          title,
-          style: poppinsMedium().copyWith(fontWeight: FontWeight.w300),
-        ),
-        subtitle: Text(
-          subTitle,
-          style:
-              poppinsRegular().copyWith(color: Colors.white.withOpacity(0.5)),
+      child: Container(
+        // width: 300,
+        child: ListTile(
+          leading: Icon(
+            leadingIcon,
+            color: Colors.white,
+            size: 20,
+          ),
+          title: Text(
+            title,
+            style: poppinsMedium()
+                .copyWith(fontWeight: FontWeight.w300, fontSize: 13),
+          ),
+          subtitle: Text(
+            subTitle,
+            style: poppinsRegular().copyWith(
+                color: Colors.white.withOpacity(
+                  0.5,
+                ),
+                fontSize: 10),
+          ),
+          trailing: Icon(
+            trailing,
+            size: 20,
+            color: Colors.white,
+          ),
         ),
       ),
     );
@@ -295,80 +437,64 @@ class _WebAppbarState extends State<WebAppbar> {
                       borderRadius: BorderRadius.circular(50),
                       child: ElevatedButton.icon(
                         onPressed: () {
-                          showDialog(
-                              context: context,
-                              builder: (ctx) => AlertDialog(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(15)),
-                                    backgroundColor: kDialogBg,
-                                    contentPadding: EdgeInsets.zero,
-                                    content: Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 20, horizontal: 15),
-                                      // height: maxHeight(context) * 0.25,
-                                      width: maxWidth(context) * 0.25,
-                                      child:isSync?Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            buildListTile(
-                                                leadingIcon:
-                                                    Icons.stop,
-                                                title: 'Stop Sync',
-                                                subTitle:
-                                                    '',
-                                                onTap: () {
-                                                  setState(() {
-                                                    isSync=false;
-                                                  });
-                                                  Navigator.of(context).pop();
-                                                }),
-                                            lightDivider(),
-                                            buildListTile(
-                                                leadingIcon: Icons
-                                                    .playlist_add_check,
-                                                title: 'Show Progress',
-                                                subTitle:
-                                                    'Present all current cloud tasks',
-                                                onTap: () {}),
-                                          ])
-                                      : Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            buildListTile(
-                                                leadingIcon:
-                                                    Icons.sync_outlined,
-                                                title: 'Sync',
-                                                subTitle:
-                                                    'Sync your assets without launching Minecraft',
-                                                onTap: () {
-                                                  setState(() {
-                                                    isSync=true;
-                                                  });
-                                                  Navigator.of(context).pop();
-                                                }),
-                                            lightDivider(),
-                                            buildListTile(
-                                                leadingIcon: Icons
-                                                    .rocket_launch_outlined,
-                                                title: 'Sync & Launch',
-                                                subTitle:
-                                                    'Launch Minecraft automatically after the sync',
-                                                onTap: () {}),
-                                          ]),
-                                    ),
-                                  ));
+                          isSync
+                              ? showPopupMenu(popups: [
+                                  PopupMenuItem(
+                                    child: buildListTile(
+                                        leadingIcon: Icons.stop,
+                                        title: 'Stop Sync',
+                                        subTitle: '',
+                                        onTap: () {
+                                          setState(() {
+                                            isSync = false;
+                                          });
+                                          Navigator.of(context).pop();
+                                        }),
+                                  ),
+                                  PopupMenuItem(
+                                    child: buildListTile(
+                                        leadingIcon: Icons.playlist_add_check,
+                                        title: 'Show Progress',
+                                        subTitle:
+                                            'Present all current cloud tasks',
+                                        onTap: () {}),
+                                  ),
+                                ], context: context)
+                              : showPopupMenu(popups: [
+                                  PopupMenuItem(
+                                    child: buildListTile(
+                                        leadingIcon: Icons.sync_outlined,
+                                        title: 'Sync',
+                                        subTitle:
+                                            'Sync your assets without launching Minecraft',
+                                        onTap: () {
+                                          setState(() {
+                                            isSync = true;
+                                          });
+                                          Navigator.of(context).pop();
+                                        }),
+                                  ),
+                                  PopupMenuItem(
+                                    child: buildListTile(
+                                        leadingIcon:
+                                            Icons.rocket_launch_outlined,
+                                        title: 'Sync & Launch',
+                                        subTitle:
+                                            'Launch Minecraft automatically after the sync',
+                                        onTap: () {}),
+                                  ),
+                                ], context: context);
                         },
                         icon: const Icon(
                           Icons.sync_outlined,
                           color: Colors.white,
                         ),
                         style: ElevatedButton.styleFrom(
-                          minimumSize: Size(50, 50),
-                          maximumSize: Size(150, 50),
+                          minimumSize: Size(47, 47),
+                          maximumSize: Size(100, 47),
                         ),
-                        label:  Text(
-                         isSync?'Syncing...': 'Sync',
+                        label: Text(
+                          isSync ? 'Syncing...' : 'Sync',
                         ),
                       ),
                     ),
@@ -377,68 +503,59 @@ class _WebAppbarState extends State<WebAppbar> {
                     ),
                     InkWell(
                       onTap: () {
-                        showDialog(
-                            context: context,
-                            builder: (ctx) => AlertDialog(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15)),
-                                  backgroundColor: kDialogBg,
-                                  contentPadding: EdgeInsets.zero,
-                                  content: Container(
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: 20, horizontal: 15),
-                                    // height: maxHeight(context) * 0.25,
-                                    width: maxWidth(context) * 0.25,
-                                    child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          buildListTile(
-                                              leadingIcon: Icons.person_outline,
-                                              title: 'Plan Details',
-                                              subTitle:
-                                                  'View Your Plan and Account Details',
-                                              onTap: () {}),
-                                          lightDivider(),
-                                          buildListTile(
-                                              leadingIcon:
-                                                  Icons.desktop_windows,
-                                              title: 'Manage Devices',
-                                              subTitle:
-                                                  'Manage your connected devices',
-                                              onTap: () {}),
-                                          lightDivider(),
-                                          buildListTile(
-                                              leadingIcon:
-                                                  Icons.logout_outlined,
-                                              title: 'Logout',
-                                              subTitle: 'Logout from Minecloud',
-                                              onTap: () {
-                                                showWebDialog(
-                                                    context: context,
-                                                    title: 'Logout',
-                                                    
-                                                    isPack: false,
-                                                    OkayBtn: 'Logout',
-                                                    cancelBtn: "Cancel");
-                                              }),
-                                          lightDivider(),
-                                        ]),
-                                  ),
-                                ));
+                        setState(() {
+                          showPopupMenu(context: context, popups: [
+                            PopupMenuItem(
+                              child: buildListTile(
+                                  leadingIcon: Icons.person_outline,
+                                  title: 'Plan Details',
+                                  subTitle:
+                                      'View Your Plan and Account Details',
+                                  onTap: () {}),
+                            ),
+                            PopupMenuItem(
+                              child: buildListTile(
+                                  leadingIcon: Icons.desktop_windows,
+                                  title: 'Manage Devices',
+                                  subTitle: 'Manage your connected devices',
+                                  trailing: Icons.launch,
+                                  onTap: () {}),
+                            ),
+                            PopupMenuItem(
+                              child: buildListTile(
+                                  leadingIcon: Icons.logout_outlined,
+                                  title: 'Logout',
+                                  subTitle: 'Logout from Minecloud',
+                                  onTap: () {
+                                    showWebDialog(
+                                        context: context,
+                                        title: 'Logout',
+                                        isPack: false,
+                                        OkayBtn: 'Logout',
+                                        cancelBtn: "Cancel");
+                                  }),
+                            ),
+                          ]);
+                        });
                       },
                       child: Container(
+                          height: 43,
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 5, vertical: 5),
+                            horizontal: 5,
+                          ),
                           decoration: BoxDecoration(
-                              color: kDialogBg,
+                              gradient: darkPopupGradient,
                               borderRadius: BorderRadius.circular(50)),
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Row(
-                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   const CircleAvatar(
-                                    radius: 20,
+                                    backgroundColor: kDialogBg,
+                                    radius: 16,
                                     child: Text('T'),
                                   ),
                                   SizedBox(
@@ -451,7 +568,11 @@ class _WebAppbarState extends State<WebAppbar> {
                                   SizedBox(
                                     width: maxWidth(context) * 0.005,
                                   ),
-                                  const Icon(Icons.expand_more)
+                                  const Icon(
+                                    Icons.expand_more,
+                                    color: Colors.white,
+                                    size: 25,
+                                  ),
                                 ],
                               ),
                             ],
@@ -468,7 +589,8 @@ class _WebAppbarState extends State<WebAppbar> {
         ),
         Text(
           widget.subTitle,
-          style: poppinsRegular().copyWith(color: Colors.white.withOpacity(0.5)),
+          style:
+              poppinsRegular().copyWith(color: Colors.white.withOpacity(0.5)),
         ),
       ],
     );

@@ -31,43 +31,65 @@ class MyPlanScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           Expanded(
-                            flex: 4,
+                            flex: 5,
                             child: Align(
                               alignment: Alignment.centerLeft,
-                              child: CircleAvatar(
-                                radius: 60,
-                                backgroundColor:
-                                    Color.fromRGBO(102, 144, 184, 0.04),
-                                child: Text(
-                                  '75%',
-                                  style: poppinsRegular(),
+                              child: Stack(children: [
+                                Container(
+                                  height: maxHeight(context) * 0.1,
+                                  width: maxHeight(context) * 0.1,
+                                  decoration: BoxDecoration(
+                                      color:
+                                          Color.fromRGBO(102, 144, 184, 0.04),
+                                      borderRadius: BorderRadius.circular(50)),
+                                  child: Center(
+                                    child: Text(
+                                      '75%',
+                                      style: poppinsRegular(),
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                Container(
+                                    height: maxHeight(context) * 0.1,
+                                    width: maxHeight(context) * 0.1,
+                                    child: const Directionality(
+                                      textDirection: TextDirection.rtl,
+                                      child: CircularProgressIndicator(
+                                        color: kPositiveBlueGui,
+                                        value: (75 / 100),
+                                      ),
+                                    )),
+                              ]),
                             ),
                           ),
+                          Expanded(flex: 1, child: Container()),
                           Expanded(
-                            flex: 5,
+                            flex: 8,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  'Cloud Storage',
-                                  style: poppinsMedium(),
+                                FittedBox(
+                                  child: Text(
+                                    'Cloud Storage',
+                                    style: poppinsMedium(),
+                                  ),
                                 ),
                                 SizedBox(
                                   height: maxHeight(context) * 0.02,
                                 ),
-                                Text(
-                                  '52.3 MB used of 500 MB',
-                                  style: poppinsRegular(),
+                                FittedBox(
+                                  child: Text(
+                                    '52.3 MB used of 500 MB',
+                                    style: poppinsRegular(),
+                                  ),
                                 )
                               ],
                             ),
                           ),
                         ],
                       ),
-                      height: 140,
+                      height: maxHeight(context)*0.15
                     ),
                   ),
                   SizedBox(
@@ -76,15 +98,16 @@ class MyPlanScreen extends StatelessWidget {
                   Expanded(
                     flex: 6,
                     child: Container(
-                      height: 140,
+                      height: maxHeight(context)*0.16,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         gradient: positiveBlueButtonGradient,
                       ),
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
-                            flex: 7,
+                            flex: 5,
                             child: Container(
                               padding: const EdgeInsets.symmetric(
                                   vertical: 20, horizontal: 20),
@@ -105,28 +128,32 @@ class MyPlanScreen extends StatelessWidget {
                             ),
                           ),
                           Expanded(
-                            flex: 3,
+                            flex: 6,
                             child: Container(
-                              height: maxHeight(context),
                               padding: EdgeInsets.symmetric(vertical: 20),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   buildSvgIconBox(
                                       'assets/svg/discordfilled.svg', context),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
                                   buildSvgIconBox(
                                       'assets/images/Icon awesome-tw.svg',
                                       context),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
                                   Container(
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 10, horizontal: 10),
                                     // height: maxHeight(context) * 0.04,
                                     // width: maxWidth(context) * 0.002,
                                     decoration: BoxDecoration(
-                                        color:
-                                            const Color.fromRGBO(255, 255, 255, 0.2),
+                                        color: const Color.fromRGBO(
+                                            255, 255, 255, 0.2),
                                         borderRadius:
                                             BorderRadius.circular(20)),
                                     child: Row(
@@ -143,6 +170,9 @@ class MyPlanScreen extends StatelessWidget {
                                         const Icon(Icons.launch)
                                       ],
                                     ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
                                   ),
                                 ],
                               ),
@@ -162,86 +192,82 @@ class MyPlanScreen extends StatelessWidget {
                   Expanded(
                     flex: 6,
                     child: Container(
-                      height: 140,
+                     height: maxHeight(context)*0.16,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           gradient: darkPopupGradient),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Expanded(
-                            flex: 7,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 10),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Devices',
-                                    style: poppinsMedium(),
+                          Container(
+                            width: maxWidth(context)*0.3,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            child: Column(
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceAround,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Devices',
+                                  style: poppinsMedium(),
+                                ),
+                                Stack(children: [
+                                  Container(
+                                    height: maxHeight(context) * 0.002,
+                                    width: maxWidth(context),
+                                    color: kDialogBg.withOpacity(0.5),
                                   ),
-                                  Stack(children: [
-                                    Container(
+                                  Positioned(
+                                    left: 0,
+                                    bottom: 0,
+                                    child: Container(
                                       height: maxHeight(context) * 0.002,
-                                      width: maxWidth(context),
-                                      color: kDialogBg.withOpacity(0.5),
+                                      width: 150,
+                                      color: kPositiveBlueGui,
                                     ),
-                                    Positioned(
-                                      left: 0,
-                                      bottom: 0,
-                                      child: Container(
-                                        height: maxHeight(context) * 0.002,
-                                        width:150,
-                                        color: kPositiveBlueGui,
-                                      ),
-                                    ),
-                                  ]),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        '3 Device(s)',
-                                        style: poppinsRegular(),
-                                      ),
-                                      Text(
-                                        'of 6 total',
-                                        style: poppinsRegular(),
-                                      ),
-                                    ],
                                   ),
-                                ],
-                              ),
+                                ]),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      '3 Device(s)',
+                                      style: poppinsRegular(),
+                                    ),
+                                    Text(
+                                      'of 6 total',
+                                      style: poppinsRegular(),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
-                          Expanded(
-                            flex: 3,
-                            child: Container(
-                              margin: EdgeInsets.symmetric(
-                                  vertical: 15, horizontal: 60),
-                              height: maxHeight(context) * 0.04,
-                              width: maxWidth(context) * 0.002,
-                              decoration: BoxDecoration(
-                                  color: Color.fromRGBO(102, 144, 184, 0.2),
+                          Container(
+                              margin:
+                                  const EdgeInsets.only(top: 15, right: 10),
+                              height: 35,
+                              
+                              decoration: BoxDecoration(  
+                                  color: const Color.fromRGBO(
+                                      102, 144, 184, 0.2),
                                   borderRadius: BorderRadius.circular(15)),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Manage',
-                                    style: poppinsStandard(),
-                                  ),
-                                  SizedBox(
-                                    width: maxWidth(context) * 0.01,
-                                  ),
-                                  Icon(Icons.launch)
-                                ],
-                              ),
-                            ),
-                          ),
+                              child: Directionality(
+                                  textDirection: TextDirection.rtl,
+                                  child: TextButton.icon(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.launch,
+                                        size: 18,
+                                      ),
+                                      label: Text(
+                                        'Manage',
+                                        style: poppinsStandard()
+                                            .copyWith(fontSize: 12),
+                                      )))),
                         ],
                       ),
                     ),
@@ -252,50 +278,73 @@ class MyPlanScreen extends StatelessWidget {
                   Expanded(
                     flex: 3,
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           gradient: darkPopupGradient),
                       child: Row(
                         children: [
                           Expanded(
-                            flex: 4,
+                            flex: 5,
                             child: Align(
                               alignment: Alignment.centerLeft,
-                              child: CircleAvatar(
-                                radius: 60,
-                                backgroundColor:
-                                    Color.fromRGBO(102, 144, 184, 0.04),
-                                child: Text(
-                                  '75%',
-                                  style: poppinsRegular(),
+                              child: Stack(children: [
+                                Container(
+                                  height: maxHeight(context) * 0.1,
+                                  width: maxHeight(context) * 0.1,
+                                  decoration: BoxDecoration(
+                                      color:
+                                          Color.fromRGBO(102, 144, 184, 0.04),
+                                      borderRadius: BorderRadius.circular(50)),
+                                  child: Center(
+                                    child: Text(
+                                      '75%',
+                                      style: poppinsRegular(),
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                Container(
+                                    height: maxHeight(context) * 0.1,
+                                    width: maxHeight(context) * 0.1,
+                                    child: const Directionality(
+                                      textDirection: TextDirection.rtl,
+                                      child: CircularProgressIndicator(
+                                        color: kPositiveBlueGui,
+                                        value: (75 / 100),
+                                      ),
+                                    )),
+                              ]),
                             ),
                           ),
+                          Expanded(flex: 1, child: Container()),
                           Expanded(
-                            flex: 5,
+                            flex: 8,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  'Standard Plan',
-                                  style: poppinsMedium(),
+                                FittedBox(
+                                  child: Text(
+                                    'Standard Plan',
+                                    style: poppinsMedium(),
+                                  ),
                                 ),
                                 SizedBox(
                                   height: maxHeight(context) * 0.02,
                                 ),
-                                Text(
-                                  '21 days left • 22/06/22 ',
-                                  style: poppinsRegular(),
+                                FittedBox(
+                                  child: Text(
+                                    '21 days left • 22/06/22 ',
+                                    style:
+                                        poppinsRegular().copyWith(fontSize: 11),
+                                  ),
                                 )
                               ],
                             ),
                           ),
                         ],
                       ),
-                      height: 140,
+                      height: maxHeight(context)*0.15,
                     ),
                   ),
                 ],

@@ -2,29 +2,31 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 
-import '../common/theme/colors.dart';
-import '../common/theme/text.dart';
-import '../widgets/buttonsWs.dart';
-import 'bottomSheetW.dart';
+import '../../common/theme/colors.dart';
+import '../../common/theme/text.dart';
+import '../../widgets/buttonsWs.dart';
+import '../bottomSheetW.dart';
 
 Future<void> showWebDialog({
   required BuildContext context,
    required bool isPack,
+   bool? isLocal,
   required String title,
   String? image,
   required String OkayBtn,
   Function()? okayTap,
   required String cancelBtn,
   Function()? cancelTap,
+  
 }) async {
   String? desc;
-  if (!isPack) {
+  if (isLocal!) {
     // when synced
     desc =
-        'It will be deleted locally, but not from the cloud or from other registered devices.';
+        'You\'ve selected one of your local worlds.What would you like to do?';
   } else {
     desc =
-        """It will be deleted from the cloud, but not locally. So you'll still be able to access and play it.""";
+        "You've selected one of your worlds on the cloud.What would you like to do?";
   }
 
   return showDialog<void>(
@@ -58,10 +60,7 @@ Future<void> showWebDialog({
                     // const SizedBox(width: 85),
                     Expanded(
                         child:
-                            DialogButton(text: cancelBtn,btncolor: kTapBorderAssets,onPressed: (){
-                             
-                            
-                            },),),
+                            DialogButton(text: cancelBtn,btncolor: kTapBorderAssets,onPressed: cancelTap,),),
                     Expanded(
                       child: DialogButton(text:OkayBtn,btncolor: kLoadingGrey,onPressed: (){},),
                         ),

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
+import 'package:minecloud_tal/functions/webpopups/deletedailog.dart';
 
 import '../../common/theme/colors.dart';
 import '../../common/theme/text.dart';
 import '../../functions/bottomSheetW.dart';
-import '../../functions/webdefaultdialog.dart';
+import '../../functions/webpopups/webdefaultdialog.dart';
 import 'leading_image.dart';
 
 Widget worldPackTile(
@@ -28,8 +29,20 @@ Widget worldPackTile(
           showMyBottomSheet(context,
               title: title, isPack: isPack, bottomSheetType: bottomSheetType);
         }
-         if(maxWidth(context) >= 1000) {
-         showWebDialog(context: context, isPack: isPack, title: title, OkayBtn:isLocalpage!?'Upload':'Download', cancelBtn: 'Delete');
+        if (maxWidth(context) >= 1000) {
+          showWebDialog(
+              context: context,
+              isPack: isPack,
+              title: title,
+              okayTap: () {},
+              isLocal: isLocalpage,
+              OkayBtn: isLocalpage! ? 'Download' : 'Upload',
+              cancelBtn: 'Delete',
+              cancelTap: () {
+                Navigator.of(context).pop();
+                showDeleteDialog(
+                    context: context, isPack: isPack, title: title);
+              });
         }
       },
       contentPadding: const EdgeInsets.symmetric(

@@ -20,11 +20,20 @@ class MainPage extends StatelessWidget {
       decoration: const BoxDecoration(gradient: darkBackgroundGradient),
       child: Scaffold(
         backgroundColor: kEmptyColor,
-        body: ResponsiveLayout(
-          mobileLayout: MobileMainPage(isLocalPage: isLocalPage,isPackView: isPackView,),
-          webLayout: WebMainPage(isLocalPage: isLocalPage,isPackView: isPackView,),
-        ),
+        body:  LayoutBuilder(
+      builder: ((context, constraints) {
+        if (constraints.maxWidth < 600) {
+          return MobileMainPage(isLocalPage: isLocalPage,isPackView: isPackView,);
+        } else {
+          return WebMainPage(isLocalPage: isLocalPage,isPackView: isPackView,);
+        }
+      }),
+    )
       ),
     );
   }
 }
+
+
+  // mobileLayout: MobileMainPage(isLocalPage: isLocalPage,isPackView: isPackView,),
+  //         webLayout: WebMainPage(isLocalPage: isLocalPage,isPackView: isPackView,),

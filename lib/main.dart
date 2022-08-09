@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home:  DashBoard(),
+      home:  OnBoardingPage(),
       // home:  DashBoard(),
       // home: const Dashboard(),
     );

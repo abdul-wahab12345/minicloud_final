@@ -261,7 +261,7 @@ class _WebDashBoardState extends State<WebDashBoard> {
                                                         color: Colors.blue,
                                                         fontSize: 12),
                                               ),
-                                              Icon(
+                                              const Icon(
                                                 Icons.arrow_drop_down,
                                                 color: Colors.white,
                                               )
@@ -319,7 +319,7 @@ class _WebDashBoardState extends State<WebDashBoard> {
                               isLocalPage: false, isPackView: _chipIndex == 0),
                           MainPage(
                               isLocalPage: true, isPackView: _chipIndex == 0),
-                          MyPlanScreen(),
+                         const MyPlanScreen(),
                         ],
                         physics:
                             const NeverScrollableScrollPhysics(), // disable swipe

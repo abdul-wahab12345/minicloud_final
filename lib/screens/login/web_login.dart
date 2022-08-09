@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:minecloud_tal/functions/webpopups/buildIcons.dart';
 import 'package:minecloud_tal/screens/reset/reset.dart';
 import 'package:minecloud_tal/screens/signup/signup.dart';
 
@@ -82,14 +83,7 @@ class _WebLoginState extends State<WebLogin> {
                   SizedBox(
                     height: height*2,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      buildSvgIconBox('assets/svg/discord.svg',context),
-                      buildSvgIconBox('assets/svg/globe-913.svg',context),
-                      buildSvgIconBox('assets/svg/twitter.svg',context),
-                    ],
-                  ),
+                 buildIconRow(context),
                 ],
               ),
             ),
@@ -105,7 +99,7 @@ class _WebLoginState extends State<WebLogin> {
                   Center(child: Image.asset('assets/images/minecloudLogo.png')),
 
                   Container(
-                    padding: EdgeInsets.symmetric(vertical: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
                     // width: maxWidth(context) * 100,
                     // height: maxWidth(context) * 30,
                     width: 400,

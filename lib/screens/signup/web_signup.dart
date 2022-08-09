@@ -11,6 +11,7 @@ import 'package:minecloud_tal/widgets/textFieldW.dart';
 
 import '../../common/theme/colors.dart';
 import '../../common/theme/constants.dart';
+import '../../functions/webpopups/buildIcons.dart';
 import '../Dashboard/dashboard.dart';
 import '../../functions/cleanDialogW.dart';
 import '../../functions/loadingDialogW.dart';
@@ -34,7 +35,7 @@ class _WebSignupPageState extends State<WebSignup> {
   final PageController _pageController = PageController(initialPage: 0);
 
   Timer? timer;
- @override
+  @override
   void initState() {
     super.initState();
     timer = Timer.periodic(const Duration(milliseconds: 2500), (Timer t) {
@@ -51,51 +52,44 @@ class _WebSignupPageState extends State<WebSignup> {
           curve: Curves.easeInOut, duration: const Duration(milliseconds: 250));
     });
   }
- 
+
   @override
   Widget build(BuildContext context) {
     Widget containerDivider() => Expanded(child: lightDivider());
-var height =  maxHeight(context) / 100;
+    var height = maxHeight(context) / 100;
     return Container(
-     // decoration: const BoxDecoration(gradient: darkBackgroundGradient),
+      // decoration: const BoxDecoration(gradient: darkBackgroundGradient),
       child: Scaffold(
         backgroundColor: kEmptyColor,
         body: Row(
-        
           children: [
-
-              Expanded(
+            Expanded(
               flex: 6,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MainBoardingSlider(_selectedIndex, _pageController),
                   SizedBox(
-                    height: height*2,
+                    height: height * 2,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                     
-                  buildSvgIconBox('assets/svg/discord.svg',context),
-                      buildSvgIconBox('assets/svg/globe-913.svg',context),
-                      buildSvgIconBox('assets/svg/twitter.svg',context),
-                    ],
-                  ),
+                  buildIconRow(context),
                 ],
               ),
             ),
-            if(maxHeight(context) >1300)
-            Expanded(flex: 2,child: Container(),),
+            if (maxHeight(context) > 1300)
+              Expanded(
+                flex: 2,
+                child: Container(),
+              ),
             Expanded(
               flex: 3,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   // SizedBox(height: kMediaQuerySize(context).height * 0.2,),
-                 
+
                   Center(child: Image.asset('assets/images/minecloudLogo.png')),
-            
+
                   Container(
                     width: 400,
                     height: 500,
@@ -128,8 +122,8 @@ var height =  maxHeight(context) / 100;
                                 children: [
                                   Checkbox(
                                     shape: const RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.all(Radius.circular(3))),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(3))),
                                     fillColor: MaterialStateProperty.all(
                                         kVerySpecificWhite40),
                                     value: isAgreeChecked,
@@ -156,7 +150,8 @@ var height =  maxHeight(context) / 100;
                             ],
                           ),
                           positiveButton('Sign Up', onPressed: () async {
-                            showLoaderDialog(context, 'Creating your account...');
+                            showLoaderDialog(
+                                context, 'Creating your account...');
                             await Future.delayed(
                                 const Duration(seconds: 3),
                                 () =>
@@ -169,7 +164,8 @@ var height =  maxHeight(context) / 100;
                             children: [
                               containerDivider(),
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
                                 child: Text('OR', style: poppinsRegular()),
                               ),
                               containerDivider(),
@@ -186,15 +182,15 @@ var height =  maxHeight(context) / 100;
                       ),
                     ),
                   ),
-            
+
                   // todo Add signup Page Here (& Backend).
                   bottomDividerTxtBtn("Already have an account? ", "Sign In.",
-                      onTap: () =>
-                          kPushNavigator(context,  LoginScreen(), replace: true)),
+                      onTap: () => kPushNavigator(context, LoginScreen(),
+                          replace: true)),
                 ],
               ),
             ),
-              Expanded(flex: 1, child: Container()),
+            Expanded(flex: 1, child: Container()),
           ],
         ),
       ),

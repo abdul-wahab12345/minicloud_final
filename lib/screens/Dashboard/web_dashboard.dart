@@ -245,157 +245,149 @@ class _WebAppbarState extends State<WebAppbar> {
                 style: const TextStyle(fontSize: 32, color: Colors.white),
               ),
             ),
-            Stack(
+            Row(
               children: [
-                Expanded(
-                  flex: 3,
-                  child: Container(),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      isSync
+                          ? showPopupMenu(popups: [
+                              PopupMenuItem(
+                                child: buildListTile(
+                                    leadingIcon: Icons.stop,
+                                    title: 'Stop Sync',
+                                    subTitle: '',
+                                    onTap: () {
+                                      setState(() {
+                                        isSync = false;
+                                      });
+                                      Navigator.of(context).pop();
+                                    }),
+                              ),
+                              PopupMenuItem(
+                                child: buildListTile(
+                                    leadingIcon: Icons.playlist_add_check,
+                                    title: 'Show Progress',
+                                    subTitle:
+                                        'Present all current cloud tasks',
+                                    onTap: () {}),
+                              ),
+                            ], context: context)
+                          : showPopupMenu(popups: [
+                              PopupMenuItem(
+                                child: buildListTile(
+                                    leadingIcon: Icons.sync_outlined,
+                                    title: 'Sync',
+                                    subTitle:
+                                        'Sync your assets without launching Minecraft',
+                                    onTap: () {
+                                      setState(() {
+                                        isSync = true;
+                                      });
+                                      Navigator.of(context).pop();
+                                    }),
+                              ),
+                              PopupMenuItem(
+                                child: buildListTile(
+                                    leadingIcon:
+                                        Icons.rocket_launch_outlined,
+                                    title: 'Sync & Launch',
+                                    subTitle:
+                                        'Launch Minecraft automatically after the sync',
+                                    onTap: () {}),
+                              ),
+                            ], context: context);
+                    },
+                    icon: const Icon(
+                      Icons.sync_outlined,
+                      color: Colors.white,
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(47, 47),
+                      maximumSize: Size(100, 47),
+                    ),
+                    label: Text(
+                      isSync ? 'Syncing...' : 'Sync',
+                    ),
+                  ),
                 ),
-                Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: ElevatedButton.icon(
-                        onPressed: () {
-                          isSync
-                              ? showPopupMenu(popups: [
-                                  PopupMenuItem(
-                                    child: buildListTile(
-                                        leadingIcon: Icons.stop,
-                                        title: 'Stop Sync',
-                                        subTitle: '',
-                                        onTap: () {
-                                          setState(() {
-                                            isSync = false;
-                                          });
-                                          Navigator.of(context).pop();
-                                        }),
-                                  ),
-                                  PopupMenuItem(
-                                    child: buildListTile(
-                                        leadingIcon: Icons.playlist_add_check,
-                                        title: 'Show Progress',
-                                        subTitle:
-                                            'Present all current cloud tasks',
-                                        onTap: () {}),
-                                  ),
-                                ], context: context)
-                              : showPopupMenu(popups: [
-                                  PopupMenuItem(
-                                    child: buildListTile(
-                                        leadingIcon: Icons.sync_outlined,
-                                        title: 'Sync',
-                                        subTitle:
-                                            'Sync your assets without launching Minecraft',
-                                        onTap: () {
-                                          setState(() {
-                                            isSync = true;
-                                          });
-                                          Navigator.of(context).pop();
-                                        }),
-                                  ),
-                                  PopupMenuItem(
-                                    child: buildListTile(
-                                        leadingIcon:
-                                            Icons.rocket_launch_outlined,
-                                        title: 'Sync & Launch',
-                                        subTitle:
-                                            'Launch Minecraft automatically after the sync',
-                                        onTap: () {}),
-                                  ),
-                                ], context: context);
-                        },
-                        icon: const Icon(
-                          Icons.sync_outlined,
-                          color: Colors.white,
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: Size(47, 47),
-                          maximumSize: Size(100, 47),
-                        ),
-                        label: Text(
-                          isSync ? 'Syncing...' : 'Sync',
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: maxWidth(context) * 0.01,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          showPopupMenu(context: context, popups: [
-                            PopupMenuItem(
-                              child: buildListTile(
-                                leadingIcon: Icons.person_outline,
-                                title: 'Plan Details',
-                                subTitle: 'View Your Plan and Account Details',
-                                onTap: () {},
-                              ),
-                            ),
-                            PopupMenuItem(
-                              child: buildListTile(
-                                leadingIcon: Icons.desktop_windows,
-                                title: 'Manage Devices',
-                                subTitle: 'Manage your connected devices',
-                                trailing: Icons.launch,
-                                onTap: () {},
-                              ),
-                            ),
-                            PopupMenuItem(
-                              child: buildListTile(
-                                  leadingIcon: Icons.logout_outlined,
-                                  title: 'Logout',
-                                  subTitle: 'Logout from Minecloud',
-                                  onTap: () {
-                                    showLogoutDialog(
-                                        context: context, title: 'Logout');
-                                  }),
-                            ),
-                          ]);
-                        });
-                      },
-                      child: Container(
-                          height: 43,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 5,
+                SizedBox(
+                  width: maxWidth(context) * 0.01,
+                ),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      showPopupMenu(context: context, popups: [
+                        PopupMenuItem(
+                          child: buildListTile(
+                            leadingIcon: Icons.person_outline,
+                            title: 'Plan Details',
+                            subTitle: 'View Your Plan and Account Details',
+                            onTap: () {},
                           ),
-                          decoration: BoxDecoration(
-                              gradient: darkPopupGradient,
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                        ),
+                        PopupMenuItem(
+                          child: buildListTile(
+                            leadingIcon: Icons.desktop_windows,
+                            title: 'Manage Devices',
+                            subTitle: 'Manage your connected devices',
+                            trailing: Icons.launch,
+                            onTap: () {},
+                          ),
+                        ),
+                        PopupMenuItem(
+                          child: buildListTile(
+                              leadingIcon: Icons.logout_outlined,
+                              title: 'Logout',
+                              subTitle: 'Logout from Minecloud',
+                              onTap: () {
+                                showLogoutDialog(
+                                    context: context, title: 'Logout');
+                              }),
+                        ),
+                      ]);
+                    });
+                  },
+                  child: Container(
+                      height: 43,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 5,
+                      ),
+                      decoration: BoxDecoration(
+                          gradient: darkPopupGradient,
+                          borderRadius: BorderRadius.circular(50)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
                             children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const CircleAvatar(
-                                    backgroundColor: kDialogBg,
-                                    radius: 16,
-                                    child: Text('T'),
-                                  ),
-                                  SizedBox(
-                                    width: maxWidth(context) * 0.005,
-                                  ),
-                                  Text(
-                                    "tallme20@gmail.com",
-                                    style: poppinsRegular(),
-                                  ),
-                                  SizedBox(
-                                    width: maxWidth(context) * 0.005,
-                                  ),
-                                  const Icon(
-                                    Icons.expand_more,
-                                    color: Colors.white,
-                                    size: 25,
-                                  ),
-                                ],
+                              const CircleAvatar(
+                                backgroundColor: kDialogBg,
+                                radius: 16,
+                                child: Text('T'),
+                              ),
+                              SizedBox(
+                                width: maxWidth(context) * 0.005,
+                              ),
+                              Text(
+                                "tallme20@gmail.com",
+                                style: poppinsRegular(),
+                              ),
+                              SizedBox(
+                                width: maxWidth(context) * 0.005,
+                              ),
+                              const Icon(
+                                Icons.expand_more,
+                                color: Colors.white,
+                                size: 25,
                               ),
                             ],
-                          )),
-                    ),
-                  ],
+                          ),
+                        ],
+                      )),
                 ),
               ],
             ),

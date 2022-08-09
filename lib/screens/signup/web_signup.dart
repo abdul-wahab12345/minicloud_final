@@ -32,26 +32,38 @@ class _WebSignupPageState extends State<WebSignup> {
   bool isPassHidden = true;
   bool isAgreeChecked = false;
   int _selectedIndex = 0;
-  final PageController _pageController = PageController(initialPage: 0);
+  final PageController _pageController1 = PageController(initialPage: 0);
 
-  Timer? timer;
+  Timer? timer1;
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(const Duration(milliseconds: 2500), (Timer t) {
+    timer1 = Timer.periodic(const Duration(milliseconds: 2500), (Timer t) {
       // _pageController.nextPage(
       //     curve: Curves.easeInOut,
       //     duration: const Duration(milliseconds: 150));
 
-      setState(() {
+     if(mounted){
+       setState(() {
         _selectedIndex = _selectedIndex + 1;
         if (_selectedIndex == 3) _selectedIndex = 0;
       });
       print('_selectedIndex $_selectedIndex');
-      _pageController.animateToPage(_selectedIndex,
+      _pageController1.animateToPage(_selectedIndex,
           curve: Curves.easeInOut, duration: const Duration(milliseconds: 250));
+     }else{
+      timer1!.cancel();
+       _pageController1.dispose();
+     }
     });
   }
+  // @override
+  // void dispose() {
+  //   // TODO: implement dispose
+  //   timer1!.cancel();
+  //   _pageController1.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +80,7 @@ class _WebSignupPageState extends State<WebSignup> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  MainBoardingSlider(_selectedIndex, _pageController),
+                  MainBoardingSlider(_selectedIndex, _pageController1),
                   SizedBox(
                     height: height * 2,
                   ),

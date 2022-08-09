@@ -10,8 +10,7 @@ class MyPlanScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Scaffold(
+    return Scaffold(
       backgroundColor: kEmptyColor,
       body: Padding(
         padding: const EdgeInsets.only(top: 8.0),
@@ -40,8 +39,8 @@ class MyPlanScreen extends StatelessWidget {
                                     height: maxHeight(context) * 0.1,
                                     width: maxHeight(context) * 0.1,
                                     decoration: BoxDecoration(
-                                        color:
-                                            const Color.fromRGBO(102, 144, 184, 0.04),
+                                        color: const Color.fromRGBO(
+                                            102, 144, 184, 0.04),
                                         borderRadius:
                                             BorderRadius.circular(50)),
                                     child: Center(
@@ -51,7 +50,7 @@ class MyPlanScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  Container(
+                                  SizedBox(
                                       height: maxHeight(context) * 0.1,
                                       width: maxHeight(context) * 0.1,
                                       child: const Directionality(
@@ -156,7 +155,7 @@ class MyPlanScreen extends StatelessWidget {
                                     height: 35,
                                     // width: 120,
                                     padding: const EdgeInsets.symmetric(
-                                    horizontal: 5),
+                                        horizontal: 5),
                                     // height: maxHeight(context) * 0.04,
                                     // width: maxWidth(context) * 0.002,
                                     decoration: BoxDecoration(
@@ -166,20 +165,20 @@ class MyPlanScreen extends StatelessWidget {
                                             BorderRadius.circular(20)),
                                     child: Center(
                                         child: Directionality(
-                                          textDirection: TextDirection.rtl,
-                                          child: TextButton.icon(
-                                              onPressed: () {},
-                                              icon: const Icon(
-                                                Icons.launch_outlined,
-                                                size: 20,
-                                                color: Colors.white,
-                                              ),
-                                              label: Text(
-                                                'Webiste',
-                                                style: poppinsStandard()
-                                                    .copyWith(fontSize: 12),
-                                              )),
-                                        )),
+                                      textDirection: TextDirection.rtl,
+                                      child: TextButton.icon(
+                                          onPressed: () {},
+                                          icon: const Icon(
+                                            Icons.launch_outlined,
+                                            size: 20,
+                                            color: Colors.white,
+                                          ),
+                                          label: Text(
+                                            'Webiste',
+                                            style: poppinsStandard()
+                                                .copyWith(fontSize: 12),
+                                          )),
+                                    )),
                                   ),
                                   const SizedBox(
                                     width: 10,
@@ -365,6 +364,6 @@ class MyPlanScreen extends StatelessWidget {
           ),
         ),
       ),
-    ));
+    );
   }
 }

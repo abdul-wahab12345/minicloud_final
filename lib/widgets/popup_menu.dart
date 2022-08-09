@@ -20,7 +20,7 @@ class CustomPopUpMenu extends StatelessWidget {
         color: kDialogBg,
         itemBuilder: (ctx) => menuList,
         icon: parent,
-        position: PopupMenuPosition.under,
+        // position: PopupMenuPosition.under,
          
       ),
     );

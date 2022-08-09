@@ -12,6 +12,7 @@ import '../../common/theme/constants.dart';
 import '../../common/theme/text.dart';
 import '../../functions/loadingDialogW.dart';
 import '../../functions/popup.dart';
+import '../../functions/webpopups/buildlisttile.dart';
 import '../../widgets/actionTileWs.dart';
 import '../../widgets/buttonsWs.dart';
 import '../../widgets/simpleWs.dart';
@@ -19,6 +20,7 @@ import '../Pageviewer/mainpage.dart';
 import '../Pageviewer/standardplan.dart';
 import '../plans/plans.dart';
 import '../syncProgress_page.dart';
+import 'filtersWebBar.dart';
 
 class WebDashBoard extends StatefulWidget {
   const WebDashBoard({Key? key}) : super(key: key);
@@ -69,46 +71,44 @@ class _WebDashBoardState extends State<WebDashBoard> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      child: Column(
-                        children: [
-                          if (_selectedIndex == 0)
-                            WebAppbar(
-                              title: 'Local Data',
-                              subTitle:
-                                  'Your playable Minecraft assets, stored on this device.',
-                              onChanged: (value) {
-                                setState(() {});
-                              },
-                            ),
-                          if (_selectedIndex == 1)
-                            WebAppbar(
-                              title: 'Cloud Data',
-                              subTitle:
-                                  'Your playable Minecraft assets, stored on this device.',
-                              onChanged: (value) {
-                                setState(() {});
-                              },
-                            ),
-                          if (_selectedIndex == 2)
-                            WebAppbar(
-                              title: 'Sync Process',
-                              subTitle:
-                                  'Progress of cloud tasks, such as upload & download.',
-                              onChanged: (value) {
-                                setState(() {});
-                              },
-                            ),
-                          if (_selectedIndex == 3)
-                            WebAppbar(
-                              title: 'Standard Plan',
-                              subTitle: 'Your Plan and account details',
-                              onChanged: (value) {
-                                setState(() {});
-                              },
-                            ),
-                        ],
-                      ),
+                    Column(
+                      children: [
+                        if (_selectedIndex == 0)
+                          WebAppbar(
+                            title: 'Local Data',
+                            subTitle:
+                                'Your playable Minecraft assets, stored on this device.',
+                            onChanged: (value) {
+                              setState(() {});
+                            },
+                          ),
+                        if (_selectedIndex == 1)
+                          WebAppbar(
+                            title: 'Cloud Data',
+                            subTitle:
+                                'Your playable Minecraft assets, stored on this device.',
+                            onChanged: (value) {
+                              setState(() {});
+                            },
+                          ),
+                        if (_selectedIndex == 2)
+                          WebAppbar(
+                            title: 'Sync Process',
+                            subTitle:
+                                'Progress of cloud tasks, such as upload & download.',
+                            onChanged: (value) {
+                              setState(() {});
+                            },
+                          ),
+                        if (_selectedIndex == 3)
+                          WebAppbar(
+                            title: 'Standard Plan',
+                            subTitle: 'Your Plan and account details',
+                            onChanged: (value) {
+                              setState(() {});
+                            },
+                          ),
+                      ],
                     ),
                     SizedBox(
                       height: maxHeight(context) * 0.03,
@@ -156,151 +156,7 @@ class _WebDashBoardState extends State<WebDashBoard> {
                             ),
                           ),
                           //Pop ups for sorting and release
-                          Expanded(
-                            flex: 4,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 5, vertical: 4),
-                                  decoration: BoxDecoration(
-                                      // color: kDialogBg,
-                                      borderRadius: BorderRadius.circular(15)),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        'Sort By:',
-                                        style: poppinsRegular()
-                                            .copyWith(fontSize: 13),
-                                      ),
-                                      Container(
-                                        width: 80,
-                                        child: CustomPopUpMenu(
-                                          parent: Row(
-                                            children: [
-                                              Text(
-                                                ' Name',
-                                                style: poppinsRegular()
-                                                    .copyWith(
-                                                        color: Colors.blue,
-                                                        fontSize: 12),
-                                              ),
-                                              const Icon(
-                                                Icons.arrow_drop_down,
-                                                color: Colors.white,
-                                              )
-                                            ],
-                                          ),
-                                          menuList: [
-                                            PopupMenuItem(
-                                              padding: EdgeInsets.zero,
-                                              child: Center(
-                                                child: Text(
-                                                  'Last Modified',
-                                                  style: poppinsStandard()
-                                                      .copyWith(
-                                                          color: Colors.white,
-                                                          fontSize: 12),
-                                                ),
-                                              ),
-                                            ),
-                                            PopupMenuItem(
-                                              padding: EdgeInsets.zero,
-                                              child: Center(
-                                                child: Text(
-                                                  'Name',
-                                                  style: poppinsStandard()
-                                                      .copyWith(
-                                                          color: Colors.white,
-                                                          fontSize: 12),
-                                                ),
-                                              ),
-                                            ),
-                                            PopupMenuItem(
-                                              child: Center(
-                                                child: Text(
-                                                  'Size',
-                                                  style: poppinsStandard()
-                                                      .copyWith(
-                                                          color: Colors.white,
-                                                          fontSize: 12),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-
-                                //second drop down
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 5, vertical: 4),
-                                  decoration: BoxDecoration(
-                                      // color: kDialogBg,
-                                      borderRadius: BorderRadius.circular(15)),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        'Sort By:',
-                                        style: poppinsRegular()
-                                            .copyWith(fontSize: 13),
-                                      ),
-                                      Container(
-                                        width: 80,
-                                        child: CustomPopUpMenu(
-                                          parent: Row(
-                                            children: [
-                                              Text(
-                                                ' Release',
-                                                style: poppinsRegular()
-                                                    .copyWith(
-                                                        color: Colors.blue,
-                                                        fontSize: 12),
-                                              ),
-                                              const Icon(
-                                                Icons.arrow_drop_down,
-                                                color: Colors.white,
-                                              )
-                                            ],
-                                          ),
-                                          menuList: [
-                                            PopupMenuItem(
-                                              padding: EdgeInsets.zero,
-                                              child: Center(
-                                                child: Text(
-                                                  'Release',
-                                                  style: poppinsStandard()
-                                                      .copyWith(
-                                                          color: Colors.white,
-                                                          fontSize: 12),
-                                                ),
-                                              ),
-                                            ),
-                                            PopupMenuItem(
-                                              padding: EdgeInsets.zero,
-                                              child: Center(
-                                                child: Text(
-                                                  'Beta',
-                                                  style: poppinsStandard()
-                                                      .copyWith(
-                                                          color: Colors.white,
-                                                          fontSize: 12),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                          const FiltersWebBar()
                           //    //Pop ups for sorting and release ended
                         ],
                       ),
@@ -372,44 +228,7 @@ class _WebAppbarState extends State<WebAppbar> {
   bool isSync = false;
   bool isExpanded = false;
 
-  Widget buildListTile(
-      {required IconData leadingIcon,
-      IconData? trailing,
-      required String title,
-      required String subTitle,
-      required Function()? onTap}) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        // width: 300,
-        child: ListTile(
-          leading: Icon(
-            leadingIcon,
-            color: Colors.white,
-            size: 20,
-          ),
-          title: Text(
-            title,
-            style: poppinsMedium()
-                .copyWith(fontWeight: FontWeight.w300, fontSize: 13),
-          ),
-          subtitle: Text(
-            subTitle,
-            style: poppinsRegular().copyWith(
-                color: Colors.white.withOpacity(
-                  0.5,
-                ),
-                fontSize: 10),
-          ),
-          trailing: Icon(
-            trailing,
-            size: 20,
-            color: Colors.white,
-          ),
-        ),
-      ),
-    );
-  }
+
 
   @override
   Widget build(BuildContext context) {

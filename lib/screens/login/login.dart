@@ -6,53 +6,18 @@ import 'package:minecloud_tal/screens/login/web_login.dart';
 
 import '../../common/theme/colors.dart';
 import '../../widgets/simpleWs.dart';
+import '../Dashboard/dashboard.dart';
+import '../plans/mobile_plans.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-     var height =  maxHeight(context) / 100;
-    return Container(
-      decoration: const BoxDecoration(gradient: darkBackgroundGradient),
-      child: Scaffold(
-        backgroundColor: kEmptyColor,
-        body: ResponsiveLayout(
-          mobileLayout: LoginMobile(),
-          webLayout: Stack(children: [
-            Container(
-              decoration: const BoxDecoration(gradient: darkBackgroundGradient),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 5,
-                    child: Padding(
-                      padding: EdgeInsets.only(top:height * 5),
-                      child: Image.asset(
-                        'assets/images/bgoverlay1.png',
-                        fit: BoxFit.fill,
-                        width: height * 100,
-                        height: height * 100,
-                      ),
-                    ),
-                  ),
-                  Expanded(flex: 3, child: Container()),
-                  Expanded(
-                    flex: 2,
-                    child: Align(
-                        alignment: Alignment.topRight,
-                        child: Image.asset(
-                          'assets/images/overlay2.png',
-                      
-                        )),
-                  ),
-                ],
-              ),
-            ),
-            WebLogin(),
-          ]),
-        ),
-      ),
-    );
+    return
+      MyResponsiveScreen(
+        mobileScreen: const MobilePlans(),
+        webScreen: WebLogin(),
+      );
   }
 }

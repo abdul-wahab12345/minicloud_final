@@ -41,7 +41,7 @@ class MyPlanScreen extends StatelessWidget {
                                     width: maxHeight(context) * 0.1,
                                     decoration: BoxDecoration(
                                         color:
-                                            Color.fromRGBO(102, 144, 184, 0.04),
+                                            const Color.fromRGBO(102, 144, 184, 0.04),
                                         borderRadius:
                                             BorderRadius.circular(50)),
                                     child: Center(

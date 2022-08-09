@@ -7,6 +7,7 @@ import 'package:minecloud_tal/widgets/components/mainBoardingSlider.dart';
 
 import '../../common/theme/colors.dart';
 import '../../common/theme/constants.dart';
+import '../../functions/webpopups/buildIcons.dart';
 import '../../widgets/buttonsWs.dart';
 import '../../widgets/components/login_bottomSignUp.dart';
 import '../../widgets/worldPackTile/plansCleanTiles.dart';
@@ -62,14 +63,7 @@ class _WebPlansState extends State<WebPlans> {
                 SizedBox(
                   height: height * 2,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                      buildSvgIconBox('assets/svg/discord.svg',context),
-                      buildSvgIconBox('assets/svg/globe-913.svg',context),
-                      buildSvgIconBox('assets/svg/twitter.svg',context),
-                  ],
-                ),
+                buildIconRow(context),
               ],
             ),
           ),

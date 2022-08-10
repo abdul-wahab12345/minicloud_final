@@ -28,29 +28,6 @@ class WebResetPass extends StatefulWidget {
 }
 
 class _WebResetPassState extends State<WebResetPass> {
-  int _selectedIndex = 0;
-  final PageController _pageController = PageController(initialPage: 0);
-
-  Timer? timer;
-
-  @override
-  void initState() {
-    super.initState();
-    timer = Timer.periodic(const Duration(milliseconds: 2500), (Timer t) {
-      // _pageController.nextPage(
-      //     curve: Curves.easeInOut,
-      //     duration: const Duration(milliseconds: 150));
-
-      setState(() {
-        _selectedIndex = _selectedIndex + 1;
-        if (_selectedIndex == 3) _selectedIndex = 0;
-      });
-      print('_selectedIndex $_selectedIndex');
-      _pageController.animateToPage(_selectedIndex,
-          curve: Curves.easeInOut, duration: const Duration(milliseconds: 250));
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     var height = maxHeight(context) / 100;
@@ -68,7 +45,7 @@ class _WebResetPassState extends State<WebResetPass> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MainBoardingSlider(_selectedIndex, _pageController),
+                MainBoardingSlider(),
                 SizedBox(
                   height: height * 2,
                 ),
@@ -82,8 +59,12 @@ class _WebResetPassState extends State<WebResetPass> {
               child: Container(),
             ),
           Expanded(
-              flex: 3,
-              child: RestFeilds(width: widget.width, height: widget.height)),
+            flex: 3,
+            child: RestFeilds(
+              width: widget.width,
+              height: widget.height,
+            ),
+          ),
           Expanded(flex: 1, child: Container()),
         ],
       ),

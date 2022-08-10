@@ -33,35 +33,6 @@ class _WebLoginState extends State<WebLogin> {
   bool isPassHidden = true;
 
   Widget containerDivider() => Expanded(child: lightDivider());
-  int _selectedIndex = 0;
-  final PageController _pageController = PageController(initialPage: 0);
-
-  Timer? timer;
-
-  @override
-  void initState() {
-    super.initState();
-    timer = Timer.periodic(const Duration(milliseconds: 2500), (Timer t) {
-      // _pageController.nextPage(
-      //     curve: Curves.easeInOut,
-      //     duration: const Duration(milliseconds: 150));
-
-      setState(() {
-        _selectedIndex = _selectedIndex + 1;
-        if (_selectedIndex == 3) _selectedIndex = 0;
-      });
-      print('_selectedIndex $_selectedIndex');
-      _pageController.animateToPage(_selectedIndex,
-          curve: Curves.easeInOut, duration: const Duration(milliseconds: 250));
-    });
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    timer!.cancel();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +47,7 @@ class _WebLoginState extends State<WebLogin> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MainBoardingSlider(_selectedIndex, _pageController),
+                const MainBoardingSlider(),
                 SizedBox(
                   height: height * 2,
                 ),
@@ -91,9 +62,12 @@ class _WebLoginState extends State<WebLogin> {
             ),
           Expanded(
             flex: 3,
-            child: LoginFeildContainer(
-              width: 400,
-              isWeb: true,
+            child: Container(
+              // margin: EdgeInsets.only(bottom: 100),
+              child: LoginFeildContainer(
+                width: 400,
+                isWeb: true,
+              ),
             ),
           ),
           Expanded(flex: 1, child: Container()),

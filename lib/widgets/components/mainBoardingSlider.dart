@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -6,33 +8,62 @@ import '../../common/theme/colors.dart';
 import '../../common/theme/text.dart';
 
 class MainBoardingSlider extends StatefulWidget {
-  final int selectedIndex;
-  final PageController pageController;
+  // final int selectedIndex;
+  // final PageController pageController;
 
-  const MainBoardingSlider(
-    this.selectedIndex,
-    this.pageController, {Key? key}) : super(key: key);
+  const MainBoardingSlider({Key? key}) : super(key: key);
 
   @override
   State<MainBoardingSlider> createState() => _MainBoardingSliderState();
 }
 
 class _MainBoardingSliderState extends State<MainBoardingSlider> {
+  int _selectedIndex = 0;
+  final PageController _pageController = PageController(initialPage: 0);
+  Timer? timer;
+
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(const Duration(milliseconds: 2500), (Timer t) {
+      // _pageController.nextPage(
+      //     curve: Curves.easeInOut,
+      //     duration: const Duration(milliseconds: 150));
+
+      if (mounted)
+        setState(() {
+          _selectedIndex = _selectedIndex + 1;
+          if (_selectedIndex == 3) _selectedIndex = 0;
+        });
+      print('_selectedIndex $_selectedIndex');
+      _pageController.animateToPage(_selectedIndex,
+          curve: Curves.easeInOut, duration: const Duration(milliseconds: 250));
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _pageController.dispose();
+    timer!.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var selectedIndex = widget.selectedIndex;
-    var pageController = widget.pageController;
-  var height =  maxHeight(context) / 100;
+    // var selectedIndex = widget.selectedIndex;
+    // var pageController = widget.pageController;
+    var height = maxHeight(context) / 100;
     return Column(
       children: [
         SizedBox(
-          height: height*60,
+          height: height * 60,
           child: PageView(
             // physics: const NeverScrollableScrollPhysics(), // disable swipe
-            controller: pageController,
+            controller: _pageController,
             onPageChanged: (pageIndex) {
               // print('In sIx: $selectedIndex');
-              setState(() => selectedIndex = pageIndex);
+              setState(() => _selectedIndex = pageIndex);
             },
             children: [
               buildMainBlock(
@@ -64,7 +95,7 @@ class _MainBoardingSliderState extends State<MainBoardingSlider> {
           child: Builder(builder: (context) {
             double size = 7;
             return SmoothPageIndicator(
-              controller: pageController,
+              controller: _pageController,
               count: 3,
               effect: SlideEffect(
                 spacing: size + 2,
@@ -86,14 +117,18 @@ class _MainBoardingSliderState extends State<MainBoardingSlider> {
   }
 
   Column buildMainBlock({title, desc, image}) {
-    var height =  maxHeight(context) / 100;
+    var height = maxHeight(context) / 100;
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         // const SizedBox(height: 50),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Image.asset('$image',height: height*40,fit: BoxFit.cover,),
+          child: Image.asset(
+            '$image',
+            height: height * 40,
+            fit: BoxFit.cover,
+          ),
         ),
         Text(
           '$title',

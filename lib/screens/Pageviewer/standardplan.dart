@@ -12,9 +12,10 @@ class MyPlanScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kEmptyColor,
-      body: Padding(
-        padding: const EdgeInsets.only(top: 8.0),
-        child: Expanded(
+      body: Container(
+        margin: const EdgeInsets.only(top: 8.0),
+        child: SizedBox(
+          height: maxHeight(context),
           child: Column(
             children: [
               Row(
@@ -257,25 +258,27 @@ class MyPlanScreen extends StatelessWidget {
                             ),
                           ),
                           Container(
-                              margin: const EdgeInsets.only(top: 15, right: 10),
-                              height: 35,
-                              decoration: BoxDecoration(
-                                  color:
-                                      const Color.fromRGBO(102, 144, 184, 0.2),
-                                  borderRadius: BorderRadius.circular(15)),
-                              child: Directionality(
-                                  textDirection: TextDirection.rtl,
-                                  child: TextButton.icon(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.launch,
-                                        size: 18,
-                                      ),
-                                      label: Text(
-                                        'Manage',
-                                        style: poppinsStandard()
-                                            .copyWith(fontSize: 12),
-                                      )))),
+                            margin: const EdgeInsets.only(top: 15, right: 10),
+                            height: 35,
+                            decoration: BoxDecoration(
+                                color: const Color.fromRGBO(102, 144, 184, 0.2),
+                                borderRadius: BorderRadius.circular(15)),
+                            child: Directionality(
+                              textDirection: TextDirection.rtl,
+                              child: TextButton.icon(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.launch,
+                                  size: 18,
+                                ),
+                                label: Text(
+                                  'Manage',
+                                  style:
+                                      poppinsStandard().copyWith(fontSize: 12),
+                                ),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -304,7 +307,7 @@ class MyPlanScreen extends StatelessWidget {
                                   width: maxHeight(context) * 0.1,
                                   decoration: BoxDecoration(
                                       color:
-                                          Color.fromRGBO(102, 144, 184, 0.04),
+                                          const Color.fromRGBO(102, 144, 184, 0.04),
                                       borderRadius: BorderRadius.circular(50)),
                                   child: Center(
                                     child: Text(
@@ -313,7 +316,7 @@ class MyPlanScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Container(
+                                SizedBox(
                                     height: maxHeight(context) * 0.1,
                                     width: maxHeight(context) * 0.1,
                                     child: const Directionality(

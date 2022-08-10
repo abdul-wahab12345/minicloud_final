@@ -26,7 +26,7 @@ class FiltersWebBar extends StatelessWidget {
                   style: poppinsRegular()
                       .copyWith(fontSize: 13),
                 ),
-                Container(
+                SizedBox(
                   width: 80,
                   child: CustomPopUpMenu(
                     parent: Row(
@@ -101,7 +101,7 @@ class FiltersWebBar extends StatelessWidget {
                   style: poppinsRegular()
                       .copyWith(fontSize: 13),
                 ),
-                Container(
+                SizedBox(
                   width: 80,
                   child: CustomPopUpMenu(
                     parent: Row(

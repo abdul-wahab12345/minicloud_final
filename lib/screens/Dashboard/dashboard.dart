@@ -32,9 +32,8 @@ class MyResponsiveScreen extends StatelessWidget {
   final Widget mobileScreen;
   final Widget webScreen;
 
-  const MyResponsiveScreen({
-        required this.mobileScreen,
-        required this.webScreen, Key? key})
+  const MyResponsiveScreen(
+      {required this.mobileScreen, required this.webScreen, Key? key})
       : super(key: key);
 
   @override

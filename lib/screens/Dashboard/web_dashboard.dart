@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/functions/webpopups/logoutdailog.dart';
-import 'package:minecloud_tal/functions/webpopups/webdefaultdialog.dart';
-import 'package:minecloud_tal/screens/Dashboard/dashboard.dart';
-import 'package:minecloud_tal/widgets/dropdown.dart';
-import 'package:minecloud_tal/widgets/popup_menu.dart';
 import 'package:minecloud_tal/widgets/sidebar.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../common/theme/colors.dart';
 import '../../common/theme/constants.dart';
@@ -13,13 +8,8 @@ import '../../common/theme/text.dart';
 import '../../functions/loadingDialogW.dart';
 import '../../functions/popup.dart';
 import '../../functions/webpopups/buildlisttile.dart';
-import '../../widgets/actionTileWs.dart';
-import '../../widgets/buttonsWs.dart';
-import '../../widgets/simpleWs.dart';
 import '../Pageviewer/mainpage.dart';
 import '../Pageviewer/standardplan.dart';
-import '../plans/plans.dart';
-import '../syncProgress_page.dart';
 import 'filtersWebBar.dart';
 
 class WebDashBoard extends StatefulWidget {
@@ -56,7 +46,7 @@ class _WebDashBoardState extends State<WebDashBoard> {
                 onChanged: (value) {
                   setState(() {
                     _selectedIndex = value;
-                    print('_selectedIndex $_selectedIndex');
+                    // print('_selectedIndex $_selectedIndex');
                     _pageController.jumpToPage(value);
                   });
                 },
@@ -129,11 +119,11 @@ class _WebDashBoardState extends State<WebDashBoard> {
                                 // shrinkWrap: true,
                                 itemBuilder: (context, index) {
                                   return Padding(
-                                    padding: EdgeInsets.only(left: 10),
+                                    padding: const EdgeInsets.only(left: 10),
                                     child: ChoiceChip(
                                       label: Text(_chips[index]),
                                       selected: _chipIndex == index,
-                                      selectedColor: Color(0xff1E76DE),
+                                      selectedColor: const Color(0xff1E76DE),
                                       onSelected: (bool selected) {
                                         setState(() {
                                           _chipIndex = selected ? index : 0;
@@ -175,7 +165,7 @@ class _WebDashBoardState extends State<WebDashBoard> {
                               isLocalPage: false, isPackView: _chipIndex == 0),
                           MainPage(
                               isLocalPage: true, isPackView: _chipIndex == 0),
-                         const MyPlanScreen(),
+                          const MyPlanScreen(),
                         ],
                         physics:
                             const NeverScrollableScrollPhysics(), // disable swipe
@@ -208,6 +198,7 @@ class _WebDashBoardState extends State<WebDashBoard> {
 
 //web appbar down
 
+// ignore: must_be_immutable
 class WebAppbar extends StatefulWidget {
   WebAppbar({
     required this.title,
@@ -227,8 +218,6 @@ class _WebAppbarState extends State<WebAppbar> {
   bool showProfileOption = false;
   bool isSync = false;
   bool isExpanded = false;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -269,8 +258,7 @@ class _WebAppbarState extends State<WebAppbar> {
                                 child: buildListTile(
                                     leadingIcon: Icons.playlist_add_check,
                                     title: 'Show Progress',
-                                    subTitle:
-                                        'Present all current cloud tasks',
+                                    subTitle: 'Present all current cloud tasks',
                                     onTap: () {}),
                               ),
                             ], context: context)
@@ -290,8 +278,7 @@ class _WebAppbarState extends State<WebAppbar> {
                               ),
                               PopupMenuItem(
                                 child: buildListTile(
-                                    leadingIcon:
-                                        Icons.rocket_launch_outlined,
+                                    leadingIcon: Icons.rocket_launch_outlined,
                                     title: 'Sync & Launch',
                                     subTitle:
                                         'Launch Minecraft automatically after the sync',
@@ -304,8 +291,8 @@ class _WebAppbarState extends State<WebAppbar> {
                       color: Colors.white,
                     ),
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(47, 47),
-                      maximumSize: Size(100, 47),
+                      minimumSize: const Size(47, 47),
+                      maximumSize: const Size(100, 47),
                     ),
                     label: Text(
                       isSync ? 'Syncing...' : 'Sync',
@@ -361,8 +348,7 @@ class _WebAppbarState extends State<WebAppbar> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Row(
-                            mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               const CircleAvatar(
                                 backgroundColor: kDialogBg,

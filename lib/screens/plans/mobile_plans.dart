@@ -86,7 +86,7 @@ class _MobilePlansState extends State<MobilePlans> {
                     dense: true,
                     visualDensity: VisualDensity.compact,
                     horizontalTitleGap: 0,
-                    leading: Icon(
+                    leading: const Icon(
                       Icons.done,
                       color: Colors.blue,
                     ),

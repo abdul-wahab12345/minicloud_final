@@ -13,6 +13,7 @@ import '../../widgets/components/login_bottomSignUp.dart';
 import '../../widgets/buttonsWs.dart';
 import '../../widgets/simpleWs.dart';
 
+// ignore: must_be_immutable
 class MobileSignup extends StatelessWidget {
   MobileSignup({Key? key, required this.width}) : super(key: key);
   double width;
@@ -30,6 +31,7 @@ class MobileSignup extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class SignUpFeilds extends StatefulWidget {
   SignUpFeilds({
     Key? key,
@@ -122,7 +124,7 @@ class _SignUpFeildsState extends State<SignUpFeilds> {
                           // todo Backend Email Auth Here.
                           // print('Login done.')
                           kNavigator(context).pop());
-                  kPushNavigator(context, DashBoard(), replace: true);
+                  kPushNavigator(context, const DashBoard(), replace: true);
                 }),
                 Row(
                   children: [
@@ -148,7 +150,8 @@ class _SignUpFeildsState extends State<SignUpFeilds> {
 
         // todo Add signup Page Here (& Backend).
         bottomDividerTxtBtn("Already have an account? ", "Sign In.",
-            onTap: () => kPushNavigator(context, LoginScreen(), replace: true)),
+            onTap: () =>
+                kPushNavigator(context, const LoginScreen(), replace: true)),
       ],
     );
   }

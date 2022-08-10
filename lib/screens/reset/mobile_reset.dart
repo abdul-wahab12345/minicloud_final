@@ -34,6 +34,7 @@ class MobileResetPass extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class RestFeilds extends StatefulWidget {
   RestFeilds({
     Key? key,
@@ -92,7 +93,8 @@ class _RestFeildsState extends State<RestFeilds> {
 
                 secondaryIconButton(
                     text: 'Log In',
-                    onPressed: () => kPushNavigator(context, LoginScreen())),
+                    onPressed: () =>
+                        kPushNavigator(context, const LoginScreen())),
               ],
             ),
           ),

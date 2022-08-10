@@ -6,7 +6,7 @@ import 'package:minecloud_tal/screens/signup/web_signup.dart';
 import '../Dashboard/dashboard.dart';
 
 class SignupPage extends StatelessWidget {
-  SignupPage({Key? key}) : super(key: key);
+  const SignupPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -39,6 +39,7 @@ class MobileLoginPage extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class LoginFeildContainer extends StatefulWidget {
   LoginFeildContainer({
     Key? key,
@@ -117,7 +118,7 @@ class _LoginFeildContainerState extends State<LoginFeildContainer> {
                           // todo Backend Email Auth Here.
                           // print('Login done.')
                           kNavigator(context).pop());
-                  kPushNavigator(context, DashBoard(), replace: true);
+                  kPushNavigator(context, const DashBoard(), replace: true);
                 }),
                 Row(
                   children: [

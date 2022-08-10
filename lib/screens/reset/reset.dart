@@ -6,7 +6,7 @@ import '../../common/theme/constants.dart';
 import '../Dashboard/dashboard.dart';
 
 class ResetPage extends StatelessWidget {
-  ResetPage({Key? key}) : super(key: key);
+  const ResetPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

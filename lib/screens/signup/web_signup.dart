@@ -3,9 +3,9 @@ import '../../common/theme/colors.dart';
 import '../../common/theme/constants.dart';
 import '../../functions/webpopups/buildIcons.dart';
 import '../../widgets/components/mainBoardingSlider.dart';
-import '../../widgets/simpleWs.dart';
 import 'mobile_signup.dart';
 
+// ignore: must_be_immutable
 class WebSignup extends StatefulWidget {
   WebSignup({Key? key, required this.width}) : super(key: key);
   double width;
@@ -19,7 +19,6 @@ class _WebSignupPageState extends State<WebSignup> {
 
   @override
   Widget build(BuildContext context) {
-    Widget containerDivider() => Expanded(child: lightDivider());
     var height = maxHeight(context) / 100;
     return Scaffold(
       backgroundColor: kEmptyColor,

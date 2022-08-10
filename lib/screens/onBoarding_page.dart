@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
@@ -17,8 +16,7 @@ class OnBoardingPage extends StatefulWidget {
 
 class _OnBoardingPageState extends State<OnBoardingPage> {
   int _selectedIndex = 0;
-  final PageController _pageController
-      = PageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -110,13 +108,14 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 32),
                   child: _selectedIndex == 2
                       ? positiveButton('Get Started',
-                          onPressed: () => kPushNavigator(context,  LoginScreen(),
+                          onPressed: () => kPushNavigator(
+                              context, const LoginScreen(),
                               replace: true))
                       : positiveButton('Next', onPressed: () async {
                           // _pageController.jumpToPage(pageIndex);
                           _pageController.nextPage(
                               curve: Curves.easeInOut,
-                              duration: Duration(milliseconds: 150));
+                              duration: const Duration(milliseconds: 150));
                         }),
                 ),
                 SizedBox(height: kMediaQuerySize(context).height * 0.075),

@@ -40,8 +40,7 @@ class _WebDashBoardState extends State<WebDashBoard> {
           children: [
             Expanded(
               flex: 2,
-              child: Container(
-                  child: SideBar(
+              child: SideBar(
                 selectedIndex: _selectedIndex,
                 onChanged: (value) {
                   setState(() {
@@ -50,7 +49,7 @@ class _WebDashBoardState extends State<WebDashBoard> {
                     _pageController.jumpToPage(value);
                   });
                 },
-              )),
+              ),
             ),
             Expanded(
               flex: 8,
@@ -134,7 +133,7 @@ class _WebDashBoardState extends State<WebDashBoard> {
                                           side: BorderSide(
                                         width: 0,
                                         color: index == _chipIndex
-                                            ? Color(0xff1E76DE)
+                                            ? const Color(0xff1E76DE)
                                             : kTapBorderAssets,
                                       )),
                                       labelStyle: poppinsRegular()

@@ -23,7 +23,6 @@ void main() async {
   );
 }
 
-
 // Lib
 // Lib -> dump
 // Lib -> common -> models
@@ -43,14 +42,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'MiniCLoud',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
       ),
-      home:  Platform.isIOS || Platform.isAndroid ?
-          const OnBoardingPage() : LoginScreen(),
+      home: Platform.isIOS || Platform.isAndroid
+          ? const OnBoardingPage()
+          : LoginScreen(),
       // home:  DashBoard(),
       // home: const Dashboard(),
     );
   }
 }
-

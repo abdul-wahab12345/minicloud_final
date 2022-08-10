@@ -16,7 +16,7 @@ class MobilePlans extends StatefulWidget {
 
 class _MobilePlansState extends State<MobilePlans> {
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(gradient: darkBackgroundGradient),
       child: Scaffold(
@@ -115,14 +115,13 @@ class _MobilePlansState extends State<MobilePlans> {
                 const Spacer(),
                 // todo connect to payment
                 SizedBox(
-                  width: maxWidth(context)*0.75,
-                  child: positiveButton('Continue',
-                      onPressed: () {}
-                  ),
+                  width: maxWidth(context) * 0.75,
+                  child: positiveButton('Continue', onPressed: () {}),
                 ),
                 const Spacer(),
                 // todo connect open plans $ features
-                bottomDividerTxtBtn("Learn more about our ", "plans & features."),
+                bottomDividerTxtBtn(
+                    "Learn more about our ", "plans & features."),
               ],
             ),
           ),

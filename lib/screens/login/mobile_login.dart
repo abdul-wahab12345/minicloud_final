@@ -1,117 +1,77 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
-import 'package:minecloud_tal/screens/reset/mobile_reset.dart';
 import 'package:minecloud_tal/screens/reset/reset.dart';
-import 'package:minecloud_tal/screens/signup/mobile_signup.dart';
 import 'package:minecloud_tal/screens/signup/signup.dart';
 import 'package:minecloud_tal/widgets/textFieldW.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../common/theme/colors.dart';
 import '../../common/theme/constants.dart';
 import '../Dashboard/dashboard.dart';
-import '../Dashboard/mobile_dasboard.dart';
 import '../../functions/loadingDialogW.dart';
 import '../../widgets/components/login_bottomSignUp.dart';
 import '../../widgets/buttonsWs.dart';
-import '../../widgets/components/mainBoardingSlider.dart';
 import '../../widgets/simpleWs.dart';
-import '../onBoarding_page.dart';
 
-class MobileLoginPage extends StatefulWidget {
-  const MobileLoginPage({Key? key}) : super(key: key);
+// ignore: must_be_immutable
+class MobileLoginPage extends StatelessWidget {
+  MobileLoginPage({
+    Key? key,
+    required this.width,
+    required this.isWeb,
+  }) : super(key: key);
 
-  @override
-  State<MobileLoginPage> createState() => _MobileLoginPageState();
-}
-
-class _MobileLoginPageState extends State<MobileLoginPage> {
-  bool isPassHidden = true;
-
-  Widget containerDivider() => Expanded(child: lightDivider());
-  int _selectedIndex = 0;
-  final PageController _pageController = PageController(initialPage: 0);
-
-  Timer? timer;
-
-  @override
-  void initState() {
-    super.initState();
-    timer = Timer.periodic(const Duration(milliseconds: 2500), (Timer t) {
-      // _pageController.nextPage(
-      //     curve: Curves.easeInOut,
-      //     duration: const Duration(milliseconds: 150));
-
-      setState(() {
-        _selectedIndex = _selectedIndex + 1;
-        if (_selectedIndex == 3) _selectedIndex = 0;
-      });
-      print('_selectedIndex $_selectedIndex');
-      _pageController.animateToPage(_selectedIndex,
-          curve: Curves.easeInOut, duration: const Duration(milliseconds: 250));
-    });
-  }
-
-  @override
-  void dispose() {
-    timer?.cancel();
-    super.dispose();
-  }
-
+  double width;
+  bool isWeb;
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(gradient: darkBackgroundGradient),
       child: Scaffold(
           backgroundColor: kEmptyColor,
-          body:LoginMobile()),
-          //  LayoutBuilder(builder: (context, constraints) {
-          //   if (constraints.maxWidth < 600) {
-          //     return LoginMobile();
-          //   } else {
-          //     return Row(
-          //       children: [
-          //         Flexible(
-          //           child: MainBoardingSlider(_selectedIndex, _pageController),
-          //         ),
-          //         SizedBox(width: 400, child: LoginMobile()),
-          //       ],
-          //     );
-          //   }
-          // })),
+          body: LoginFeildContainer(
+            width: width,
+            isWeb: isWeb,
+          )),
     );
   }
 }
 
-class LoginMobile extends StatefulWidget {
-  const LoginMobile({Key? key}) : super(key: key);
+class LoginFeildContainer extends StatefulWidget {
+  LoginFeildContainer({
+    Key? key,
+    required this.width,
+    required this.isWeb,
+  }) : super(key: key);
+
+  double width;
+  bool isWeb;
 
   @override
-  State<LoginMobile> createState() => _LoginMobileState();
+  State<LoginFeildContainer> createState() => _LoginFeildContainerState();
 }
 
-class _LoginMobileState extends State<LoginMobile> {
+class _LoginFeildContainerState extends State<LoginFeildContainer> {
   bool isPassHidden = true;
 
   Widget containerDivider() => Expanded(child: lightDivider());
 
   @override
   Widget build(BuildContext context) {
+    bool isWebView = widget.isWeb;
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         // SizedBox(height: kMediaQuerySize(context).height * 0.2,),
-        const SizedBox(
-          height: 15,
+        SizedBox(
+          height: isWebView ? 0 : 15,
         ),
         Center(child: Image.asset('assets/images/minecloudLogo.png')),
 
         Container(
-          width: kMediaQuerySize(context).width,
+          width: widget.width,
           height: 500,
           margin: const EdgeInsets.symmetric(horizontal: 20),
           decoration: BoxDecoration(
@@ -137,8 +97,7 @@ class _LoginMobileState extends State<LoginMobile> {
                         }),
                     InkWell(
                       splashColor: kDetailedWhite60,
-                      onTap: () =>
-                          kPushNavigator(context, ResetPage()),
+                      onTap: () => kPushNavigator(context, ResetPage()),
                       child: Container(
                         alignment: Alignment.topLeft,
                         margin: const EdgeInsets.only(top: 7.5),
@@ -158,7 +117,7 @@ class _LoginMobileState extends State<LoginMobile> {
                           // todo Backend Email Auth Here.
                           // print('Login done.')
                           kNavigator(context).pop());
-                  kPushNavigator(context,  DashBoard(), replace: true);
+                  kPushNavigator(context, DashBoard(), replace: true);
                 }),
                 Row(
                   children: [
@@ -184,7 +143,7 @@ class _LoginMobileState extends State<LoginMobile> {
 
         // todo Add signup Page Here (& Backend).
         bottomDividerTxtBtn("Don't have an account? ", "Sign Up.",
-            onTap: () => kPushNavigator(context,  SignupPage())),
+            onTap: () => kPushNavigator(context, SignupPage())),
       ],
     );
   }

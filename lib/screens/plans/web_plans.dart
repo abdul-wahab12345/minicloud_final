@@ -1,10 +1,6 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
-import 'package:minecloud_tal/functions/svgIconWidget.dart';
 import 'package:minecloud_tal/widgets/components/mainBoardingSlider.dart';
-
 import '../../common/theme/colors.dart';
 import '../../common/theme/constants.dart';
 import '../../functions/webpopups/buildIcons.dart';
@@ -65,15 +61,15 @@ class _WebPlansState extends State<WebPlans> {
                   const SizedBox(height: 50), // maxHeight(context) * 0.125
 
                   ListTile(
-                      dense: true,
-                      visualDensity: VisualDensity.compact,
-                      horizontalTitleGap: 0,
-                      leading: const Icon(
-                        Icons.done,
-                        color: Colors.blue,
-                      ),
-                      title: RichText(
-                          text: TextSpan(
+                    dense: true,
+                    visualDensity: VisualDensity.compact,
+                    horizontalTitleGap: 0,
+                    leading: const Icon(
+                      Icons.done,
+                      color: Colors.blue,
+                    ),
+                    title: RichText(
+                      text: TextSpan(
                         text: '125 MB ',
                         style: poppinsRegular().copyWith(
                             fontSize: 12, fontWeight: FontWeight.bold),
@@ -84,7 +80,9 @@ class _WebPlansState extends State<WebPlans> {
                                 fontSize: 12, color: kDetailedWhite60),
                           )
                         ],
-                      ))),
+                      ),
+                    ),
+                  ),
 
                   ListTile(
                       dense: true,

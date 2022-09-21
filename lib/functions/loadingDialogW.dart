@@ -10,11 +10,9 @@ Future<void> showLoaderDialog(context, String text) async {
     builder: (BuildContext context) {
       return AlertDialog(
           shape:
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           backgroundColor: kDialogBg,
-          content:
-          Row(
+          content: Row(
             children: [
               CircularProgressIndicator(
                 color: kSecondaryButton,
@@ -23,8 +21,7 @@ Future<void> showLoaderDialog(context, String text) async {
               const SizedBox(width: 15),
               Text(text, style: poppinsRegular())
             ],
-          )
-      );
+          ));
     },
   );
 }
